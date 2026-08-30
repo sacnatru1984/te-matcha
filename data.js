@@ -661,6 +661,15 @@ const PRODUCTOS = [
     precio: null,
   },
   {
+    id: 'matcha-premium-sobres', nombre: 'Matcha Premium Quality en Sobres', te: 'matcha',
+    imagen: 'assets/images/matcha-premium-sobres.png',
+    sku: 'T31103',
+    descripcion: 'Descubre la pureza y la tradición de Japón en cada sorbo, con nuestro té verde pulverizado. Disfruta de este Matcha Premium de alta calidad, en su presentación de 28 sobres individuales. Perfecto para quienes buscan una experiencia auténtica y revitalizante. Diluyelo en agua fría o caliente, o utilízalo en postres y bebidas. Lleva tu matcha a donde quiera que vayas.',
+    caracteristicas: ['Hoja de té verde molida', 'Bolsa con 28 sobres de 2 gramos c/u', 'Contiene edulcorantes'],
+    presentacion: '28 sobres de 2 g c/u',
+    precio: null,
+  },
+  {
     id: 'rooibos-red-tea', nombre: 'Rooibos en Sobres', te: 'rooibos',
     imagen: 'assets/images/rooibos-sobres.png',
     sku: 'T31108',
