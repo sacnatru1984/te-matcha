@@ -11,20 +11,50 @@ function irA(tab) {
 function renderProductos() {
   const grid = document.getElementById('productos-grid')
   grid.innerHTML = PRODUCTOS.map(p => `
-    <div class="producto-card ${p.te}">
+    <div class="producto-card ${p.te}" onclick="abrirProducto('${p.id}')">
       <img src="${p.imagen}" alt="${p.nombre}">
       <div class="body">
         <div class="tag">${p.te === 'matcha' ? 'Matcha' : 'Rooibos'}</div>
         <h3>${p.nombre}</h3>
-        <p>${p.descripcion}</p>
+        <p class="clamp">${p.descripcion}</p>
         <div class="meta">
           <span>${p.presentacion}</span>
-          <span class="precio ${p.precio ? '' : 'placeholder'}">${p.precio ? '$' + p.precio + ' MXN' : '[precio por confirmar]'}</span>
+          <span class="precio ${p.precio ? '' : 'placeholder'}">${p.precio ? '$' + p.precio.toFixed(2) + ' MXN' : '[precio por confirmar]'}</span>
         </div>
+        ${p.puntos ? `<div class="puntos">🔷 ${p.puntos} puntos</div>` : ''}
       </div>
     </div>
   `).join('')
 }
+
+function abrirProducto(id) {
+  const p = PRODUCTOS.find(x => x.id === id)
+  if (!p) return
+  document.getElementById('pmodal-img').src = p.imagen
+  document.getElementById('pmodal-img').alt = p.nombre
+  document.getElementById('pmodal-tag').textContent = (p.te === 'matcha' ? 'Matcha' : 'Rooibos') + (p.sku ? ' · SKU ' + p.sku : '')
+  document.getElementById('pmodal-nombre').textContent = p.nombre
+  document.getElementById('pmodal-precio').textContent = p.precio ? '$' + p.precio.toFixed(2) + ' MXN' : '[precio por confirmar]'
+  document.getElementById('pmodal-precio').classList.toggle('placeholder', !p.precio)
+  document.getElementById('pmodal-puntos').textContent = p.puntos ? '🔷 ' + p.puntos + ' puntos' : ''
+  document.getElementById('pmodal-presentacion').textContent = p.presentacion
+  document.getElementById('pmodal-descripcion').textContent = p.descripcion
+  const carEl = document.getElementById('pmodal-caracteristicas')
+  if (p.caracteristicas && p.caracteristicas.length) {
+    carEl.innerHTML = p.caracteristicas.map(c => `<li>${c}</li>`).join('')
+    carEl.parentElement.style.display = ''
+  } else {
+    carEl.parentElement.style.display = 'none'
+  }
+  document.getElementById('pmodal').classList.add('open')
+}
+
+function cerrarPModal() {
+  document.getElementById('pmodal').classList.remove('open')
+}
+document.getElementById('pmodal').addEventListener('click', ev => {
+  if (ev.target.id === 'pmodal') cerrarPModal()
+})
 
 // ── Recetas ──
 let filtroActivo = 'todas'

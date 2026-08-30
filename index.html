@@ -125,6 +125,28 @@
   </div>
 </div>
 
+<!-- ═══ MODAL PRODUCTO ═══ -->
+<div class="modal-overlay" id="pmodal">
+  <div class="modal-sheet">
+    <button class="modal-close" onclick="cerrarPModal()">✕</button>
+    <img id="pmodal-img" src="" alt="">
+    <div class="modal-body">
+      <div class="tag" id="pmodal-tag"></div>
+      <h2 id="pmodal-nombre"></h2>
+      <div class="precio-row">
+        <span class="precio" id="pmodal-precio"></span>
+        <span class="puntos" id="pmodal-puntos"></span>
+      </div>
+      <div class="porciones" id="pmodal-presentacion"></div>
+      <p id="pmodal-descripcion" class="descripcion"></p>
+      <div id="pmodal-caracteristicas-wrap">
+        <h4>Características</h4>
+        <ul id="pmodal-caracteristicas"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ BOTTOM NAV ═══ -->
 <nav class="bottom-nav">
   <button class="nav-btn active" data-tab="inicio" onclick="irA('inicio')"><span class="ic">🏠</span>Inicio</button>

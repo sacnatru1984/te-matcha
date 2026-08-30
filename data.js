@@ -644,11 +644,14 @@ const RECETAS = [
 
 const PRODUCTOS = [
   {
-    id: 'matcha-ceremonial', nombre: 'Matcha Ceremonial 100% Pure', te: 'matcha',
+    id: 'matcha-ceremonial', nombre: 'Matcha Ceremonial en Sobres', te: 'matcha',
     imagen: 'assets/images/matcha-section.jpeg',
-    descripcion: 'Té verde matcha molido, 100% puro, calidad ceremonial. Ideal para prepararlo tradicional o en latte.',
-    presentacion: '2.46 oz (70 g)',
-    precio: null,
+    sku: 'T31109',
+    descripcion: 'Descubre la pureza y la tradición del país del sol naciente en cada sorbo, con nuestro té verde pulverizado. Disfruta de este Matcha Ceremonial 100% puro en su presentación de 28 sobres individuales. Perfecto para quienes buscan llenarse de energía con todos los beneficios del té auténtico de Japón. Lleva tu matcha a donde quiera que vayas.',
+    caracteristicas: ['Hoja de té verde molida', 'Bolsa con 28 sobres de 2 gramos c/u'],
+    presentacion: '28 sobres de 2 g c/u',
+    precio: 224.50,
+    puntos: 18,
   },
   {
     id: 'matcha-premium-lime', nombre: 'Matcha Premium Quality — Sabor Lime', te: 'matcha',
