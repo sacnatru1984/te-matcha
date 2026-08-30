@@ -19,9 +19,7 @@ function renderProductos() {
         <p class="clamp">${p.descripcion}</p>
         <div class="meta">
           <span>${p.presentacion}</span>
-          <span class="precio ${p.precio ? '' : 'placeholder'}">${p.precio ? '$' + p.precio.toFixed(2) + ' MXN' : '[precio por confirmar]'}</span>
         </div>
-        ${p.puntos ? `<div class="puntos">🔷 ${p.puntos} puntos</div>` : ''}
       </div>
     </div>
   `).join('')
@@ -34,9 +32,6 @@ function abrirProducto(id) {
   document.getElementById('pmodal-img').alt = p.nombre
   document.getElementById('pmodal-tag').textContent = (p.te === 'matcha' ? 'Matcha' : 'Rooibos') + (p.sku ? ' · SKU ' + p.sku : '')
   document.getElementById('pmodal-nombre').textContent = p.nombre
-  document.getElementById('pmodal-precio').textContent = p.precio ? '$' + p.precio.toFixed(2) + ' MXN' : '[precio por confirmar]'
-  document.getElementById('pmodal-precio').classList.toggle('placeholder', !p.precio)
-  document.getElementById('pmodal-puntos').textContent = p.puntos ? '🔷 ' + p.puntos + ' puntos' : ''
   document.getElementById('pmodal-presentacion').textContent = p.presentacion
   document.getElementById('pmodal-descripcion').textContent = p.descripcion
   const carEl = document.getElementById('pmodal-caracteristicas')
