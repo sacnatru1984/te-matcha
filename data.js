@@ -645,7 +645,7 @@ const RECETAS = [
 const PRODUCTOS = [
   {
     id: 'matcha-ceremonial', nombre: 'Matcha Ceremonial en Sobres', te: 'matcha',
-    imagen: 'assets/images/matcha-section.jpeg',
+    imagen: 'assets/images/matcha-ceremonial-sobres.png',
     sku: 'T31109',
     descripcion: 'Descubre la pureza y la tradición del país del sol naciente en cada sorbo, con nuestro té verde pulverizado. Disfruta de este Matcha Ceremonial 100% puro en su presentación de 28 sobres individuales. Perfecto para quienes buscan llenarse de energía con todos los beneficios del té auténtico de Japón. Lleva tu matcha a donde quiera que vayas.',
     caracteristicas: ['Hoja de té verde molida', 'Bolsa con 28 sobres de 2 gramos c/u'],
