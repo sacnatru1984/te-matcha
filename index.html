@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Matcha by NICE — Guía y Recetario</title>
+<meta name="description" content="Guía de productos, recetas y beneficios de NICE Imperial Matcha Green Tea y NICE Rooibos Red Tea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="app-header">
+    <img src="assets/images/logo-nice.png" alt="NICE">
+    <div class="brand">matcha<small>by NICE</small></div>
+  </header>
+
+  <!-- ═══ INICIO ═══ -->
+  <section class="section active" id="sec-inicio">
+    <div class="hero">
+      <img src="assets/images/cover.jpeg" alt="NICE Matcha y Rooibos">
+    </div>
+    <div class="hero-text">
+      <div class="eyebrow">NICE Imperial Matcha &amp; Rooibos</div>
+      <h1>Bienestar en cada taza</h1>
+      <p>Descubre nuestros tés, sus beneficios y todas las formas de disfrutarlos — en bebidas, postres y mucho más.</p>
+      <button class="btn-primary" onclick="irA('productos')">Explorar productos →</button>
+    </div>
+    <div class="quick-links">
+      <div class="quick-card" onclick="irA('recetas')">
+        <div class="icon">📖</div>
+        <div class="txt"><b>Recetario</b><span>20 recetas con Matcha y Rooibos</span></div>
+        <div class="chev">›</div>
+      </div>
+      <div class="quick-card" onclick="irA('historia')">
+        <div class="icon">🌿</div>
+        <div class="txt"><b>Historia y beneficios</b><span>Conoce su origen</span></div>
+        <div class="chev">›</div>
+      </div>
+      <div class="quick-card" onclick="irA('biblioteca')">
+        <div class="icon">🗂️</div>
+        <div class="txt"><b>Biblioteca</b><span>Recetario en PDF y recursos</span></div>
+        <div class="chev">›</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCTOS ═══ -->
+  <section class="section" id="sec-productos">
+    <div class="section-head">
+      <div class="eyebrow">Productos</div>
+      <h2>Nuestra línea NICE</h2>
+      <p>Matcha y Rooibos, en las presentaciones que ya conoces.</p>
+    </div>
+    <div class="productos-grid" id="productos-grid"></div>
+  </section>
+
+  <!-- ═══ RECETAS ═══ -->
+  <section class="section" id="sec-recetas">
+    <div class="section-head">
+      <div class="eyebrow">Recetario</div>
+      <h2>Recetas con NICE</h2>
+      <p>Bebidas y platillos con Matcha y Rooibos.</p>
+    </div>
+    <div class="pills" id="recetas-pills">
+      <button class="pill active" data-filtro="todas">Todas</button>
+      <button class="pill" data-filtro="matcha">Matcha</button>
+      <button class="pill" data-filtro="rooibos">Rooibos</button>
+      <button class="pill" data-filtro="bebida">Bebidas</button>
+      <button class="pill" data-filtro="platillo">Platillos</button>
+    </div>
+    <div class="recetas-grid" id="recetas-grid"></div>
+  </section>
+
+  <!-- ═══ HISTORIA ═══ -->
+  <section class="section" id="sec-historia">
+    <div class="section-head">
+      <div class="eyebrow">Historia y beneficios</div>
+      <h2>Conoce nuestros tés</h2>
+      <p>Lo que hace especial a cada uno.</p>
+    </div>
+    <div class="beneficios-block" id="beneficios-block"></div>
+  </section>
+
+  <!-- ═══ BIBLIOTECA ═══ -->
+  <section class="section" id="sec-biblioteca">
+    <div class="section-head">
+      <div class="eyebrow">Biblioteca</div>
+      <h2>Recursos descargables</h2>
+      <p>Todo lo que necesitas para conocer y compartir NICE Matcha &amp; Rooibos.</p>
+    </div>
+    <div class="biblioteca-grid">
+      <a class="recurso-card" href="assets/recetario-nice.pdf" download>
+        <div class="icon">📕</div>
+        <div class="txt"><b>Recetario NICE — PDF</b><span>Las 20 recetas completas, listas para imprimir o compartir</span></div>
+        <div class="dl">Descargar ↓</div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══ MODAL RECETA ═══ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-sheet">
+    <button class="modal-close" onclick="cerrarModal()">✕</button>
+    <img id="modal-img" src="" alt="">
+    <div class="modal-body">
+      <div class="tag" id="modal-tag"></div>
+      <h2 id="modal-nombre"></h2>
+      <div class="porciones" id="modal-porciones"></div>
+      <h4>Ingredientes</h4>
+      <ul id="modal-ingredientes"></ul>
+      <h4>Instrucciones</h4>
+      <ol id="modal-instrucciones"></ol>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BOTTOM NAV ═══ -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-tab="inicio" onclick="irA('inicio')"><span class="ic">🏠</span>Inicio</button>
+  <button class="nav-btn" data-tab="productos" onclick="irA('productos')"><span class="ic">🍵</span>Productos</button>
+  <button class="nav-btn" data-tab="recetas" onclick="irA('recetas')"><span class="ic">📋</span>Recetas</button>
+  <button class="nav-btn" data-tab="historia" onclick="irA('historia')"><span class="ic">🕐</span>Historia</button>
+  <button class="nav-btn" data-tab="biblioteca" onclick="irA('biblioteca')"><span class="ic">▭</span>Biblioteca</button>
+</nav>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
