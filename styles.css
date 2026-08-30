@@ -105,7 +105,7 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
   background: var(--blanco); border-radius: var(--radio); overflow: hidden;
   box-shadow: var(--sombra); border: 1px solid var(--borde); cursor: pointer;
 }
-.receta-card img { width: 100%; height: 150px; object-fit: cover; display: block; }
+.receta-card img { width: 100%; height: 190px; object-fit: contain; background: var(--verde-fondo); display: block; }
 .receta-card .body { padding: 13px 16px; }
 .receta-card .tag { font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--verde); }
 .receta-card.rooibos .tag { color: var(--rooibos); }
@@ -123,7 +123,7 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
   border-radius: 22px 22px 0 0; animation: slideup .25s ease;
 }
 @keyframes slideup { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.modal-sheet img { width: 100%; height: 200px; object-fit: cover; }
+.modal-sheet img { width: 100%; height: 240px; object-fit: contain; background: var(--verde-fondo); }
 .modal-close {
   position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; border-radius: 50%;
   background: rgba(255,255,255,.9); border: none; font-size: 16px; cursor: pointer; color: var(--verde-oscuro);
@@ -141,7 +141,7 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 /* ── Productos ── */
 .productos-grid { padding: 12px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
 .producto-card { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); border: 1px solid var(--borde); }
-.producto-card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+.producto-card img { width: 100%; height: 210px; object-fit: contain; background: var(--verde-fondo); display: block; }
 .producto-card .body { padding: 15px 18px; }
 .producto-card .tag { font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--verde); }
 .producto-card.rooibos .tag { color: var(--rooibos); }
