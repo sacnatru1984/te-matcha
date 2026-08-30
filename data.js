@@ -661,10 +661,12 @@ const PRODUCTOS = [
     precio: null,
   },
   {
-    id: 'rooibos-red-tea', nombre: 'NICE Rooibos Red Tea', te: 'rooibos',
-    imagen: 'assets/images/rooibos-section.jpeg',
-    descripcion: 'Té rojo en polvo, sin cafeína, sabor suave. Ideal para toda la familia, caliente o frío.',
-    presentacion: '3.52 oz (100 g)',
+    id: 'rooibos-red-tea', nombre: 'Rooibos en Sobres', te: 'rooibos',
+    imagen: 'assets/images/rooibos-sobres.png',
+    sku: 'T31108',
+    descripcion: 'Disfruta de la riqueza y suavidad de nuestro té rojo pulverizado. Diseñado para ofrecerte una experiencia de sabor única y relajante. En presentación de 28 sobres individuales, es perfecto para tomar con agua o agregarlo en tus postres y bebidas.',
+    caracteristicas: ['Rooibos en polvo', 'Bolsa con 28 sobres de 2 gr c/u', 'Contiene edulcorantes'],
+    presentacion: '28 sobres de 2 g c/u',
     precio: null,
   },
 ]
