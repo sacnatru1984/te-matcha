@@ -654,8 +654,8 @@ const PRODUCTOS = [
     puntos: 18,
   },
   {
-    id: 'matcha-premium-lime', nombre: 'Matcha Premium Quality — Sabor Lime', te: 'matcha',
-    imagen: 'assets/images/limonada-matcha.jpeg',
+    id: 'matcha-premium-lime', nombre: 'Matcha Premium Quality — Sabor Limón', te: 'matcha',
+    imagen: 'assets/images/matcha-premium-limon-sobres.png',
     descripcion: 'Té verde matcha premium con un toque de limón, en sobres individuales listos para llevar.',
     presentacion: '28 sobres',
     precio: null,
