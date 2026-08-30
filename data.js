@@ -398,6 +398,248 @@ const RECETAS = [
       'Sirve fría, decorada con hojas de albahaca fresca.',
     ],
   },
+  // ── MATCHA · de "El Arte del Matcha: Origen, Beneficios y Recetas" ──
+  {
+    id: 'matcha-tradicional', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Tradicional',
+    porciones: '1', imagen: 'assets/images/matcha-tradicional.png',
+    ingredientes: [
+      '2 cucharaditas de Té Matcha grado ceremonial',
+      '70 ml de agua caliente (90°C)',
+    ],
+    instrucciones: [
+      'En un bowl, pon las 2 cucharaditas de Té Matcha.',
+      'Añade los 70 ml de agua caliente (90°C) y bate en seguida con un batidor de bambú (chasen).',
+      'Para disolverlo, mueve primero lentamente para integrar, y después más enérgico hasta obtener espuma.',
+      'Sirve en tu taza de preferencia.',
+    ],
+  },
+  {
+    id: 'tiramisu-matcha', te: 'matcha', tipo: 'platillo', nombre: 'Tiramisú con Matcha NICE',
+    porciones: '4', imagen: 'assets/images/tiramisu-matcha.png',
+    ingredientes: [
+      '2 cditas de NICE Imperial Matcha Green Tea',
+      '250 g de queso mascarpone',
+      '200 ml de crema para batir bien fría',
+      '3 cdas de azúcar (o monk fruit)',
+      '1 cdita de esencia de vainilla',
+      '1 taza de leche vegetal (almendra, avena o la que uses)',
+      '1 paquete de soletas / ladyfingers / galletas suaves',
+      'Matcha extra para espolvorear',
+    ],
+    instrucciones: [
+      'Bate la crema hasta que forme picos suaves.',
+      'En otro bowl, mezcla el mascarpone, el azúcar y la vainilla.',
+      'Incorpora la crema batida con movimientos envolventes.',
+      'Disuelve el matcha en la leche vegetal (debe estar tibia, no caliente).',
+      'Remoja las galletas en la mezcla de matcha (rápido, sin empapar demasiado).',
+      'En un molde, coloca capas de galletas y crema alternadas. Refrigera y espolvorea matcha extra antes de servir.',
+    ],
+  },
+  {
+    id: 'pancakes-matcha-avena', te: 'matcha', tipo: 'platillo', nombre: 'Pancakes de Matcha con Avena',
+    porciones: '2 (6-8 pancakes pequeños)', imagen: 'assets/images/pancakes-matcha-avena.jpeg',
+    ingredientes: [
+      '1 taza de harina de avena o integral',
+      '1 cucharadita de Matcha NICE Calidad Premium',
+      '1 cucharadita de polvo para hornear',
+      '1 pizca de sal',
+      '1 huevo',
+      '3/4 taza de leche vegetal o deslactosada',
+      '1 cucharada de miel o monk fruit (opcional)',
+      '1 cucharadita de extracto de vainilla',
+      'Aceite de coco para engrasar',
+      'Toppings sugeridos: yogur griego o de coco, fresas/plátano/moras, coco rallado, semillas de chía',
+    ],
+    instrucciones: [
+      'Mezcla los ingredientes secos: harina, matcha, polvo para hornear y sal.',
+      'Agrega los líquidos: huevo, leche, vainilla y miel. Mezcla hasta tener una masa suave.',
+      'Engrasa ligeramente el sartén con aceite de coco y vierte pequeñas porciones de masa.',
+      'Cocina a fuego medio-bajo, 2-3 minutos por lado, hasta que salgan burbujitas.',
+      'Sirve, apila y decora con tus toppings favoritos.',
+    ],
+  },
+  {
+    id: 'galletas-matcha-choc-blanco', te: 'matcha', tipo: 'platillo', nombre: 'Galletas de Matcha y Chispas de Chocolate Blanco',
+    porciones: '18 - 20 galletas', imagen: 'assets/images/galletas-matcha-choc-blanco.png',
+    ingredientes: [
+      '1 taza de harina para todo uso',
+      '1 cucharadita de matcha en polvo',
+      '1/2 cucharadita de bicarbonato de sodio',
+      '1/4 cucharadita de sal',
+      '1/2 taza (1 barra) de mantequilla sin sal, a temperatura ambiente',
+      '1/2 taza de azúcar granulada',
+      '1/4 taza de azúcar morena',
+      '1 huevo grande',
+      '1 cucharadita de extracto de vainilla',
+      '1 taza de chispas de chocolate blanco',
+    ],
+    instrucciones: [
+      'Precalienta el horno a 175°C (350°F). Cubre una bandeja con papel pergamino.',
+      'Tamiza la harina, el matcha, el bicarbonato y la sal.',
+      'Bate la mantequilla, el azúcar granulada y la morena hasta que estén suaves y esponjosos.',
+      'Incorpora el huevo y el extracto de vainilla.',
+      'Agrega gradualmente los secos a los húmedos, mezclando hasta combinar.',
+      'Incorpora las chispas de chocolate blanco.',
+      'Forma bolitas de masa en la bandeja, dejando espacio entre ellas.',
+      'Hornea 10-12 minutos, o hasta que los bordes doren ligeramente.',
+      'Deja enfriar unos minutos en la bandeja antes de pasarlas a una rejilla.',
+    ],
+  },
+  {
+    id: 'matcha-honey-hot-chocolate', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Honey Hot Chocolate',
+    porciones: '1', imagen: 'assets/images/matcha-hot-chocolate.png',
+    ingredientes: [
+      '2 cucharaditas de Té Matcha',
+      '20 ml de agua caliente',
+      '1 taza de leche de coco',
+      '2 cucharaditas de miel',
+      '1/4 cucharadita de sal',
+      '1 cucharadita de esencia de vainilla',
+      '1 cucharadita de chocolate blanco',
+      'Bombones para adornar',
+    ],
+    instrucciones: [
+      'En una taza, mezcla el Té Matcha con 20 ml de agua caliente (90°C).',
+      'En un recipiente, mezcla la leche de coco caliente (60°C) con el chocolate blanco hasta disolver.',
+      'Agrega la miel, la esencia de vainilla y la pizca de sal.',
+      'Vierte la preparación de matcha a la taza con la leche y chocolate, integra revolviendo suavemente.',
+      'Decora con bombones al gusto.',
+    ],
+  },
+  {
+    id: 'iced-matcha', te: 'matcha', tipo: 'bebida', nombre: 'Iced Matcha',
+    porciones: '1', imagen: 'assets/images/iced-matcha.png',
+    ingredientes: [
+      '2 cucharaditas de Té Matcha grado ceremonial',
+      '70 ml de agua caliente',
+      '3-4 cubitos de hielo',
+    ],
+    instrucciones: [
+      'En un bowl, pon las 2 cucharaditas de Té Matcha.',
+      'Añade los 70 ml de agua caliente (90°C) y bate con un batidor de bambú.',
+      'Mueve primero lentamente para integrar, y después más enérgico hasta obtener espuma.',
+      'Sirve en tu taza de preferencia y agrega los hielos.',
+    ],
+  },
+  {
+    id: 'matcha-soda', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Soda',
+    porciones: '1', imagen: 'assets/images/matcha-soda.png',
+    ingredientes: [
+      '2 cucharaditas de Té Matcha grado ceremonial',
+      '2 cucharaditas de Stevia',
+      '100 ml de agua',
+      '100 ml de agua gasificada',
+      '2-3 cubitos de hielo',
+      'Limón y hierbabuena al gusto',
+    ],
+    instrucciones: [
+      'En un vaso, pon el Té Matcha, agrega el endulzante y disuelve con el agua.',
+      'Añade el agua gasificada y el hielo.',
+      'Añade un trozo de limón y hierbabuena.',
+    ],
+  },
+  {
+    id: 'matcha-latte-arroz', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Latte con Leche de Arroz (sin gluten)',
+    porciones: '1', imagen: 'assets/images/matcha-latte-arroz.png',
+    ingredientes: [
+      '3 cucharaditas de Té Matcha grado Ceremonial',
+      '90 ml de agua caliente',
+      '30 ml de leche de arroz sin endulzar, caliente',
+      'Edulcorante de tu preferencia',
+    ],
+    instrucciones: [
+      'En un vaso, agrega el Té Matcha y vierte los 90 ml de agua caliente (90°C).',
+      'Bate bien hasta conseguir bastante espuma (con chasen o mini batidora eléctrica).',
+      'Prepara los 30 ml de leche de arroz caliente en un vaso aparte.',
+      'Vierte la leche en el matcha lentamente.',
+      'Añade el edulcorante de tu preferencia.',
+    ],
+  },
+  {
+    id: 'matcha-affogato', te: 'matcha', tipo: 'platillo', nombre: 'Matcha Affogato',
+    porciones: '1', imagen: 'assets/images/matcha-affogato.png',
+    ingredientes: [
+      '100 g de helado de vainilla',
+      '2 cucharaditas de Té Matcha grado Ceremonial',
+      '20 ml de agua caliente',
+      'Edulcorante al gusto',
+    ],
+    instrucciones: [
+      'Pon las 2 cucharaditas de Té Matcha en un vaso.',
+      'Agrega 20 ml de agua caliente (90°C) y bate bien hasta conseguir bastante espuma.',
+      'Sirve una bola de helado de vainilla en un recipiente.',
+      'Vierte la salsa de matcha encima del helado lentamente.',
+    ],
+  },
+  {
+    id: 'matcha-orange', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Orange',
+    porciones: '1', imagen: 'assets/images/matcha-orange.png',
+    ingredientes: [
+      '1 cucharadita de Té Matcha grado Ceremonial',
+      '10 g de azúcar (1 cucharada sopera)',
+      '60 ml de agua caliente',
+      '4-5 cubitos de hielo',
+      '100 ml de zumo de naranja 100%',
+    ],
+    instrucciones: [
+      'En un bowl, pon el matcha y el azúcar. Añade agua caliente (90°C) y bate bien.',
+      'En un vaso alto, pon los cubitos de hielo y agrega el matcha ya batido.',
+      'Espera 2 minutos a que se enfríe y añade lentamente el zumo de naranja.',
+    ],
+  },
+  {
+    id: 'matcha-mojito-smoothie', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Mojito Smoothie',
+    porciones: '2', imagen: 'assets/images/matcha-mojito-smoothie.png',
+    ingredientes: [
+      '1 taza de agua de coco',
+      '1 cucharadita de Té Matcha grado Ceremonial',
+      '1 taza de agua',
+      'Jugo de 2 limones',
+      '1 aguacate maduro pequeño',
+      '1 hoja grande de menta',
+      '1 1/2 taza de hojas de espinaca',
+      '1 cucharadita de vainilla en polvo',
+      '1/2 taza de cubitos de hielo',
+    ],
+    instrucciones: [
+      'Mezcla todos los ingredientes en la licuadora y disfruta.',
+    ],
+  },
+  {
+    id: 'matcha-chia-pudding', te: 'matcha', tipo: 'platillo', nombre: 'Matcha Chia Pudding',
+    porciones: '2', imagen: 'assets/images/matcha-chia-pudding.png',
+    ingredientes: [
+      '1 taza de leche de almendras',
+      '1/2 cucharadita de Té Matcha',
+      '1/3 taza de semillas de chía',
+      'Endulzante a elección',
+      '1 cucharadita de extracto de vainilla',
+    ],
+    instrucciones: [
+      'Mezcla en la licuadora la leche de almendras, el endulzante, la vainilla y el matcha.',
+      'En un tazón, agrega las semillas de chía junto con la mezcla anterior.',
+      'Refrigera por lo menos 15 minutos.',
+      'Acompaña con tus toppings preferidos.',
+    ],
+  },
+  {
+    id: 'natilla-matcha', te: 'matcha', tipo: 'platillo', nombre: 'Natilla de Matcha',
+    porciones: '4', imagen: 'assets/images/natilla-matcha.jpeg',
+    ingredientes: [
+      '2 tazas de leche',
+      '2 cucharadas de maicena',
+      '1/3 de taza de azúcar',
+      '1 cucharadita de NICE Imperial Matcha Green Tea',
+      '1 cucharada de extracto de vainilla',
+    ],
+    instrucciones: [
+      'En un bowl mezcla la maicena, el azúcar y el matcha.',
+      'En una olla, calienta a fuego lento la leche y el extracto de vainilla.',
+      'Añade a la olla el resto de los ingredientes y comienza a remover hasta que hierva.',
+      'Cuando llegue al punto de ebullición, retírala del fuego y viértela en pequeños cuencos.',
+      'Cuando estén a temperatura ambiente, refrigéralos unas horas.',
+    ],
+  },
 ]
 
 const PRODUCTOS = [
@@ -424,14 +666,36 @@ const PRODUCTOS = [
   },
 ]
 
+const ORIGEN_MATCHA = {
+  titulo: 'Origen del Matcha',
+  texto: [
+    'El matcha, un polvo fino de hojas de té verde especialmente cultivadas y procesadas, tiene una rica historia que se remonta a la antigua China. Fue en Japón donde su preparación y consumo se elevaron a una forma de arte y espiritualidad, convirtiéndose en el centro de la ceremonia del té japonesa.',
+    'Se dice que el matcha fue introducido en Japón en el siglo XII por el monje budista Eisai, quien regresó de China con semillas de té y el conocimiento para prepararlo en polvo. Reconoció sus beneficios para la salud, particularmente su capacidad para promover la meditación y la concentración en los monjes.',
+    'Las hojas utilizadas, conocidas como tencha, se cultivan a la sombra durante las últimas semanas antes de la cosecha — esto aumenta su clorofila y aminoácidos, dando el color verde vibrante y el sabor umami distintivo del matcha. Después se cuecen al vapor para detener la oxidación, se secan y se muelen lentamente en molinos de piedra hasta obtener un polvo fino.',
+  ],
+}
+
+const PREPARACION_MATCHA = {
+  titulo: 'Modo de preparación',
+  items: [
+    { t: 'Bebida caliente', d: 'En una taza de agua tibia, vacía el contenido de un sobre o cuchara medidora y revuelve hasta deshacer los grumos. Disfruta.' },
+    { t: 'Bebida fría', d: 'Vacía el contenido de un sobre o cuchara medidora en una botella de 600 ml, o en un vaso con hielo o agua mineral. Revuelve y disfruta.' },
+    { t: 'Tip', d: 'También se puede preparar con limonada, naranjada, agua de piña, y más.' },
+  ],
+}
+
 const INFO_TES = {
   matcha: {
     titulo: 'Matcha',
     beneficios: [
       { t: 'Té verde concentrado', d: 'Una taza de matcha puede tener el valor nutricional de 10 tazas de té verde.' },
-      { t: 'Poder antioxidante', d: 'El té matcha cuenta con más antioxidantes que cualquier otra variedad de té.' },
-      { t: 'Ayuda a mejorar la apariencia de la piel', d: 'El matcha contiene nutrientes sorprendentes para tu piel, como la clorofila y vitaminas.' },
-      { t: 'Energía revitalizante', d: 'La teína que contiene el matcha se procesa de forma más lenta, haciendo que la energía dure mucho más.' },
+      { t: 'Rico en antioxidantes', d: 'Está repleto de catequinas, que ayudan a combatir los radicales libres y reducen el daño celular — más que cualquier otra variedad de té.' },
+      { t: 'Energía sostenida y enfoque mental', d: 'La combinación de L-teanina y cafeína da una energía sostenida y claridad mental, sin los nervios asociados al café — la teína se procesa más lento, por lo que la energía dura más.' },
+      { t: 'Acelera el metabolismo', d: 'Puede aumentar la termogénesis (la velocidad a la que el cuerpo quema calorías) y promover la oxidación de grasas.' },
+      { t: 'Desintoxicación natural', d: 'Su alta concentración de clorofila lo convierte en un potente agente desintoxicante, ayudando a eliminar toxinas del cuerpo.' },
+      { t: 'Ayuda a mejorar la apariencia de la piel', d: 'Contiene nutrientes sorprendentes para tu piel, como la clorofila y vitaminas.' },
+      { t: 'Fortalece el sistema inmunológico', d: 'Contiene vitaminas A y C, potasio, hierro y calcio — nutrientes esenciales para un sistema inmune saludable.' },
+      { t: 'Salud del corazón', d: 'El consumo regular de té verde, incluido el matcha, puede contribuir a la salud cardiovascular al reducir el colesterol LDL y los triglicéridos.' },
     ],
   },
   rooibos: {

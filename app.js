@@ -80,7 +80,13 @@ document.getElementById('modal').addEventListener('click', ev => {
 // ── Historia / beneficios ──
 function renderHistoria() {
   const block = document.getElementById('beneficios-block')
-  block.innerHTML = Object.values(INFO_TES).map(grupo => `
+  const origen = `
+    <h3>${ORIGEN_MATCHA.titulo}</h3>
+    <div class="beneficio-item origen">
+      ${ORIGEN_MATCHA.texto.map(p => `<p>${p}</p>`).join('')}
+    </div>
+  `
+  const beneficios = Object.values(INFO_TES).map(grupo => `
     <h3>${grupo.titulo}</h3>
     ${grupo.beneficios.map((b, i) => `
       <div class="beneficio-item ${grupo.titulo === 'Rooibos' ? 'rooibos' : ''}">
@@ -89,6 +95,16 @@ function renderHistoria() {
       </div>
     `).join('')}
   `).join('')
+  const preparacion = `
+    <h3>${PREPARACION_MATCHA.titulo}</h3>
+    ${PREPARACION_MATCHA.items.map(it => `
+      <div class="beneficio-item prep">
+        <b>${it.t}</b>
+        <span>${it.d}</span>
+      </div>
+    `).join('')}
+  `
+  block.innerHTML = origen + beneficios + preparacion
 }
 
 // ── Init ──
