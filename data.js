@@ -670,6 +670,15 @@ const PRODUCTOS = [
     precio: null,
   },
   {
+    id: 'matcha-premium-polvo', nombre: 'Matcha Premium Quality en Polvo', te: 'matcha',
+    imagen: 'assets/images/matcha-premium-polvo.png',
+    sku: 'T31101',
+    descripcion: 'Descubre la pureza y la tradición de Japón en cada sorbo, con nuestro té verde pulverizado. Este Matcha Premium de alta calidad es perfecto para quienes buscan una experiencia auténtica y revitalizante. Diluyelo en agua fría o caliente, o utilízalo en postres y bebidas.',
+    caracteristicas: ['Hoja de té verde molida', 'Bolsa con 100 gramos', 'Contiene edulcorantes'],
+    presentacion: '100 g',
+    precio: null,
+  },
+  {
     id: 'rooibos-red-tea', nombre: 'Rooibos en Sobres', te: 'rooibos',
     imagen: 'assets/images/rooibos-sobres.png',
     sku: 'T31108',
