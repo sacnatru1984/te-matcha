@@ -192,7 +192,6 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 .testimonios-grid { padding: 12px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
 .testimonio-card { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); border: 1px solid var(--borde); }
 .testimonio-card img { width: 100%; height: auto; display: block; }
-.btn-compartir-testimonio { width: 100%; border-radius: 0; border: none; border-top: 1px solid var(--borde); padding: 13px 16px; }
 
 /* ── Biblioteca ── */
 .biblioteca-grid { padding: 12px 20px 20px; display: flex; flex-direction: column; gap: 12px; }

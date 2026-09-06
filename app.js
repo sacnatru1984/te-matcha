@@ -189,7 +189,6 @@ function renderTestimonios() {
   grid.innerHTML = TESTIMONIOS.map(t => `
     <div class="testimonio-card">
       <img src="${t.imagen}" alt="${t.alt}">
-      <button class="btn-compartir btn-compartir-testimonio" onclick='compartir("${t.nombre}", "Mira el testimonio de ${t.nombre} con Matcha NICE 🍵")'>Compartir ↗</button>
     </div>
   `).join('')
 }
