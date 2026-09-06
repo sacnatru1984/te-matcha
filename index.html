@@ -47,6 +47,11 @@
         <div class="txt"><b>Recetario</b><span>33 recetas con Matcha y Rooibos</span></div>
         <div class="chev">›</div>
       </div>
+      <div class="quick-card" onclick="irA('testimonios')">
+        <div class="icon">💬</div>
+        <div class="txt"><b>Testimonios</b><span>Lo que cuentan quienes ya lo probaron</span></div>
+        <div class="chev">›</div>
+      </div>
       <div class="quick-card" onclick="irA('historia')">
         <div class="icon">🌿</div>
         <div class="txt"><b>Historia y beneficios</b><span>Conoce su origen</span></div>
@@ -99,6 +104,16 @@
       <p>Lo que hace especial a cada uno.</p>
     </div>
     <div class="beneficios-block" id="beneficios-block"></div>
+  </section>
+
+  <!-- ═══ TESTIMONIOS ═══ -->
+  <section class="section" id="sec-testimonios">
+    <div class="section-head">
+      <div class="eyebrow">Testimonios</div>
+      <h2>Lo que cuentan quienes lo prueban</h2>
+      <p>Experiencias ilustrativas — los resultados pueden variar.</p>
+    </div>
+    <div class="testimonios-grid" id="testimonios-grid"></div>
   </section>
 
   <!-- ═══ BIBLIOTECA ═══ -->
@@ -173,6 +188,7 @@
   <button class="nav-btn" data-tab="productos" onclick="irA('productos')"><span class="ic">🍵</span>Productos</button>
   <button class="nav-btn" data-tab="recetas" onclick="irA('recetas')"><span class="ic">📋</span>Recetas</button>
   <button class="nav-btn" data-tab="historia" onclick="irA('historia')"><span class="ic">🕐</span>Historia</button>
+  <button class="nav-btn" data-tab="testimonios" onclick="irA('testimonios')"><span class="ic">💬</span>Testimonios</button>
   <button class="nav-btn" data-tab="biblioteca" onclick="irA('biblioteca')"><span class="ic">▭</span>Biblioteca</button>
 </nav>
 

@@ -691,6 +691,21 @@ const PRODUCTOS = [
   },
 ]
 
+// Testimonios ilustrativos (imagen ya trae la cita, nombre y el disclaimer
+// "Experiencia ilustrativa. Los resultados pueden variar." integrados).
+const TESTIMONIOS = [
+  {
+    id: 'mariana', nombre: 'Mariana, 34 años', te: 'matcha',
+    imagen: 'assets/images/testimonio1.png',
+    alt: 'Testimonio de Mariana, 34 años: cambiar su café de la tarde por matcha le ayudó a sentir energía más estable.',
+  },
+  {
+    id: 'carlos', nombre: 'Carlos, 41 años', te: 'matcha',
+    imagen: 'assets/images/testimonio2.png',
+    alt: 'Testimonio de Carlos, 41 años: tomar matcha antes de caminar le da más ánimo para mantenerse activo.',
+  },
+]
+
 const ORIGEN_MATCHA = {
   titulo: 'Origen del Matcha',
   texto: [

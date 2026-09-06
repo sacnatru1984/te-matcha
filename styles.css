@@ -188,6 +188,12 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 .beneficio-item.prep { border-left: 3px solid #C9A227; }
 .fuente-nota { font-size: 10.5px; color: var(--muted); font-style: italic; margin: -4px 0 12px; padding: 0 2px; }
 
+/* ── Testimonios ── */
+.testimonios-grid { padding: 12px 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+.testimonio-card { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); border: 1px solid var(--borde); }
+.testimonio-card img { width: 100%; height: auto; display: block; }
+.btn-compartir-testimonio { width: 100%; border-radius: 0; border: none; border-top: 1px solid var(--borde); padding: 13px 16px; }
+
 /* ── Biblioteca ── */
 .biblioteca-grid { padding: 12px 20px 20px; display: flex; flex-direction: column; gap: 12px; }
 .recurso-card {
@@ -208,10 +214,10 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 }
 .nav-btn {
   background: none; border: none; color: rgba(255,255,255,.55); font-family: inherit;
-  display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px;
-  padding: 6px 8px; cursor: pointer; border-radius: 10px; flex: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 9px;
+  padding: 6px 3px; cursor: pointer; border-radius: 10px; flex: 1; min-width: 0; white-space: nowrap;
 }
-.nav-btn .ic { font-size: 18px; }
+.nav-btn .ic { font-size: 17px; }
 .nav-btn.active { color: var(--blanco); background: rgba(255,255,255,.08); }
 
 @media (min-width: 481px) {
