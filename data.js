@@ -704,6 +704,21 @@ const TESTIMONIOS = [
     imagen: 'assets/images/testimonio2.png',
     alt: 'Testimonio de Carlos, 41 años: tomar matcha antes de caminar le da más ánimo para mantenerse activo.',
   },
+  {
+    id: 'paola', nombre: 'Paola, 32 años', te: 'matcha',
+    imagen: 'assets/images/testimonio3.png',
+    alt: 'Testimonio de Paola, 32 años: después de correr prepara un matcha frío que complementa su rutina y le da energía sin sentirse pesada.',
+  },
+  {
+    id: 'miguel', nombre: 'Miguel, 39 años', te: 'matcha',
+    imagen: 'assets/images/testimonio4.png',
+    alt: 'Testimonio de Miguel, 39 años: el matcha se volvió parte de su mañana y le ayuda a sentir energía más constante durante su jornada de trabajo.',
+  },
+  {
+    id: 'fernanda', nombre: 'Fernanda, 29 años', te: 'matcha',
+    imagen: 'assets/images/testimonio5.png',
+    alt: 'Testimonio de Fernanda, 29 años: el matcha se volvió parte de su rutina de la mañana, le ayuda a comenzar enfocada y con energía.',
+  },
 ]
 
 const ORIGEN_MATCHA = {
