@@ -1,5 +1,18 @@
 // Lógica de navegación y render — Matcha by NICE
 
+// ── WhatsApp / Compartir ──
+function pedirLink(texto) {
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`
+}
+function compartir(titulo, texto) {
+  const textoCompleto = texto + '\n' + location.href
+  if (navigator.share) {
+    navigator.share({ title: titulo, text: texto, url: location.href }).catch(() => {})
+  } else {
+    window.open(`https://wa.me/?text=${encodeURIComponent(textoCompleto)}`, '_blank')
+  }
+}
+
 function irA(tab) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'))
   document.getElementById('sec-' + tab).classList.add('active')
@@ -41,6 +54,8 @@ function abrirProducto(id) {
   } else {
     carEl.parentElement.style.display = 'none'
   }
+  document.getElementById('pmodal-pedir').href = pedirLink(`Hola, me interesa el ${p.nombre} de NICE 🍵 ¿me das informes?`)
+  document.getElementById('pmodal-compartir').onclick = () => compartir(p.nombre, `Mira ${p.nombre} en la guía Matcha by NICE 🍵`)
   document.getElementById('pmodal').classList.add('open')
 }
 
@@ -53,13 +68,18 @@ document.getElementById('pmodal').addEventListener('click', ev => {
 
 // ── Recetas ──
 let filtroActivo = 'todas'
+let busquedaActiva = ''
 
 function renderRecetas() {
   const grid = document.getElementById('recetas-grid')
+  const q = busquedaActiva.trim().toLowerCase()
   const lista = RECETAS.filter(r => {
-    if (filtroActivo === 'todas') return true
-    return r.te === filtroActivo || r.tipo === filtroActivo
+    if (filtroActivo !== 'todas' && r.te !== filtroActivo && r.tipo !== filtroActivo) return false
+    if (q && !r.nombre.toLowerCase().includes(q) && !r.ingredientes.some(i => i.toLowerCase().includes(q))) return false
+    return true
   })
+  const vacio = document.getElementById('recetas-vacio')
+  vacio.style.display = lista.length ? 'none' : ''
   grid.innerHTML = lista.map(r => `
     <div class="receta-card ${r.te}" onclick="abrirReceta('${r.id}')">
       <img src="${r.imagen}" alt="${r.nombre}">
@@ -82,6 +102,11 @@ document.addEventListener('click', ev => {
   renderRecetas()
 })
 
+document.getElementById('recetas-buscador').addEventListener('input', ev => {
+  busquedaActiva = ev.target.value
+  renderRecetas()
+})
+
 function abrirReceta(id) {
   const r = RECETAS.find(x => x.id === id)
   if (!r) return
@@ -92,6 +117,10 @@ function abrirReceta(id) {
   document.getElementById('modal-porciones').textContent = 'Porciones: ' + r.porciones
   document.getElementById('modal-ingredientes').innerHTML = r.ingredientes.map(i => `<li>${i}</li>`).join('')
   document.getElementById('modal-instrucciones').innerHTML = r.instrucciones.map(i => `<li>${i}</li>`).join('')
+  const teNombre = r.te === 'matcha' ? 'Matcha' : 'Rooibos'
+  document.getElementById('modal-pedir').href = pedirLink(`Hola, vi la receta "${r.nombre}" en la app Matcha by NICE y quiero pedir mi ${teNombre} 🍵`)
+  document.getElementById('modal-pedir').textContent = `📲 Pide tu ${teNombre} para esta receta`
+  document.getElementById('modal-compartir').onclick = () => compartir(r.nombre, `Mira esta receta de ${r.nombre} en la guía Matcha by NICE 🍵`)
   document.getElementById('modal').classList.add('open')
 }
 
@@ -102,24 +131,46 @@ document.getElementById('modal').addEventListener('click', ev => {
   if (ev.target.id === 'modal') cerrarModal()
 })
 
+document.addEventListener('keydown', ev => {
+  if (ev.key !== 'Escape') return
+  cerrarModal()
+  cerrarPModal()
+})
+
 // ── Historia / beneficios ──
-function renderHistoria() {
-  const block = document.getElementById('beneficios-block')
-  const origen = `
-    <h3>${ORIGEN_MATCHA.titulo}</h3>
-    <div class="beneficio-item origen">
-      ${ORIGEN_MATCHA.texto.map(p => `<p>${p}</p>`).join('')}
+function renderOrigen(origen, claseExtra) {
+  return `
+    <h3>${origen.titulo}</h3>
+    <div class="beneficio-item origen ${claseExtra || ''}">
+      ${origen.texto.map(p => `<p>${p}</p>`).join('')}
     </div>
   `
-  const beneficios = Object.values(INFO_TES).map(grupo => `
-    <h3>${grupo.titulo}</h3>
-    ${grupo.beneficios.map((b, i) => `
-      <div class="beneficio-item ${grupo.titulo === 'Rooibos' ? 'rooibos' : ''}">
+}
+
+function renderHistoria() {
+  const block = document.getElementById('beneficios-block')
+
+  const matchaBlock = renderOrigen(ORIGEN_MATCHA) + `
+    <h3>${INFO_TES.matcha.titulo} — Beneficios</h3>
+    ${INFO_TES.matcha.beneficios.map(b => `
+      <div class="beneficio-item">
         <b>${b.t}</b>
         <span>${b.d}</span>
       </div>
     `).join('')}
-  `).join('')
+  `
+
+  const rooibosBlock = renderOrigen(ORIGEN_ROOIBOS, 'rooibos') + `
+    <div class="fuente-nota">Fuente: información general de dominio público — NICE aún no publica su propia reseña de origen para el rooibos.</div>
+    <h3>${INFO_TES.rooibos.titulo} — Beneficios</h3>
+    ${INFO_TES.rooibos.beneficios.map(b => `
+      <div class="beneficio-item rooibos">
+        <b>${b.t}</b>
+        <span>${b.d}</span>
+      </div>
+    `).join('')}
+  `
+
   const preparacion = `
     <h3>${PREPARACION_MATCHA.titulo}</h3>
     ${PREPARACION_MATCHA.items.map(it => `
@@ -129,7 +180,7 @@ function renderHistoria() {
       </div>
     `).join('')}
   `
-  block.innerHTML = origen + beneficios + preparacion
+  block.innerHTML = matchaBlock + rooibosBlock + preparacion
 }
 
 // ── Init ──

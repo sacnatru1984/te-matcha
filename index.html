@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Matcha by NICE — Guía y Recetario</title>
 <meta name="description" content="Guía de productos, recetas y beneficios de NICE Imperial Matcha Green Tea y NICE Rooibos Red Tea.">
+
+<!-- Favicon: taza de matcha, verde de marca -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232D6A4F'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%8D%B5%3C/text%3E%3C/svg%3E">
+
+<!-- Open Graph: para que se vea bien al compartir el link por WhatsApp/redes -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Matcha by NICE — Guía y Recetario">
+<meta property="og:description" content="Productos, 33 recetas y beneficios de NICE Imperial Matcha Green Tea y NICE Rooibos Red Tea.">
+<meta property="og:image" content="https://te-matcha-delta.vercel.app/assets/images/cover.jpeg">
+<meta property="og:url" content="https://te-matcha-delta.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -65,6 +77,9 @@
       <h2>Recetas con NICE</h2>
       <p>Bebidas y platillos con Matcha y Rooibos.</p>
     </div>
+    <div class="buscador-wrap">
+      <input type="search" id="recetas-buscador" class="buscador" placeholder="Buscar receta o ingrediente...">
+    </div>
     <div class="pills" id="recetas-pills">
       <button class="pill active" data-filtro="todas">Todas</button>
       <button class="pill" data-filtro="matcha">Matcha</button>
@@ -73,6 +88,7 @@
       <button class="pill" data-filtro="platillo">Platillos</button>
     </div>
     <div class="recetas-grid" id="recetas-grid"></div>
+    <div class="recetas-vacio" id="recetas-vacio" style="display:none">No encontramos recetas con eso — prueba con otra palabra.</div>
   </section>
 
   <!-- ═══ HISTORIA ═══ -->
@@ -121,6 +137,10 @@
       <ul id="modal-ingredientes"></ul>
       <h4>Instrucciones</h4>
       <ol id="modal-instrucciones"></ol>
+      <div class="cta-row">
+        <a id="modal-pedir" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">📲 Pide tu té para esta receta</a>
+        <button id="modal-compartir" class="btn-compartir">Compartir ↗</button>
+      </div>
     </div>
   </div>
 </div>
@@ -138,6 +158,10 @@
       <div id="pmodal-caracteristicas-wrap">
         <h4>Características</h4>
         <ul id="pmodal-caracteristicas"></ul>
+      </div>
+      <div class="cta-row">
+        <a id="pmodal-pedir" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">📲 Pedir por WhatsApp</a>
+        <button id="pmodal-compartir" class="btn-compartir">Compartir ↗</button>
       </div>
     </div>
   </div>

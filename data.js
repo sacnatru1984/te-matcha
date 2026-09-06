@@ -1,6 +1,8 @@
 // Datos de recetas, productos e información de los tés — NICE Imperial Matcha & Rooibos
 // Fuente: recetario oficial NICE (references/recetario.pdf)
 
+const WHATSAPP_NUMERO = '527775210310'
+
 const RECETAS = [
   // ── MATCHA · BEBIDAS ──
   {
@@ -695,6 +697,17 @@ const ORIGEN_MATCHA = {
     'El matcha, un polvo fino de hojas de té verde especialmente cultivadas y procesadas, tiene una rica historia que se remonta a la antigua China. Fue en Japón donde su preparación y consumo se elevaron a una forma de arte y espiritualidad, convirtiéndose en el centro de la ceremonia del té japonesa.',
     'Se dice que el matcha fue introducido en Japón en el siglo XII por el monje budista Eisai, quien regresó de China con semillas de té y el conocimiento para prepararlo en polvo. Reconoció sus beneficios para la salud, particularmente su capacidad para promover la meditación y la concentración en los monjes.',
     'Las hojas utilizadas, conocidas como tencha, se cultivan a la sombra durante las últimas semanas antes de la cosecha — esto aumenta su clorofila y aminoácidos, dando el color verde vibrante y el sabor umami distintivo del matcha. Después se cuecen al vapor para detener la oxidación, se secan y se muelen lentamente en molinos de piedra hasta obtener un polvo fino.',
+  ],
+}
+
+// Origen general del rooibos (información pública, no proviene de material NICE
+// — NICE aún no publica su propia reseña de origen para este té).
+const ORIGEN_ROOIBOS = {
+  titulo: 'Origen del Rooibos',
+  texto: [
+    'El rooibos ("arbusto rojo" en afrikáans) proviene de la planta Aspalathus linearis, que crece de forma silvestre solo en una región muy específica: las montañas de Cederberg, en Sudáfrica.',
+    'Durante siglos, el pueblo Khoisan, indígena de la zona, recolectó y preparó esta planta como infusión. A principios del siglo XX, colonos europeos en la región comenzaron a cultivarla y popularizarla, y hoy el rooibos es una de las bebidas más representativas de Sudáfrica.',
+    'Sus hojas se cortan, se machacan y se dejan fermentar al sol — este proceso de oxidación es lo que le da su color rojizo característico y su sabor suave y ligeramente dulce, distinto al de cualquier té verde o negro.',
   ],
 }
 
