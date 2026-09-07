@@ -32,6 +32,7 @@ function renderProductos() {
         <p class="clamp">${p.descripcion}</p>
         <div class="meta">
           <span>${p.presentacion}</span>
+          ${p.precio ? `<span class="precio">$${p.precio.toFixed(2)} MXN</span>` : ''}
         </div>
       </div>
     </div>
@@ -45,6 +46,8 @@ function abrirProducto(id) {
   document.getElementById('pmodal-img').alt = p.nombre
   document.getElementById('pmodal-tag').textContent = (p.te === 'matcha' ? 'Matcha' : 'Rooibos') + (p.sku ? ' · SKU ' + p.sku : '')
   document.getElementById('pmodal-nombre').textContent = p.nombre
+  document.getElementById('pmodal-precio').textContent = p.precio ? '$' + p.precio.toFixed(2) + ' MXN' : ''
+  document.getElementById('pmodal-precio').style.display = p.precio ? '' : 'none'
   document.getElementById('pmodal-presentacion').textContent = p.presentacion
   document.getElementById('pmodal-descripcion').textContent = p.descripcion
   const carEl = document.getElementById('pmodal-caracteristicas')
@@ -54,7 +57,8 @@ function abrirProducto(id) {
   } else {
     carEl.parentElement.style.display = 'none'
   }
-  document.getElementById('pmodal-pedir').href = pedirLink(`Hola, me interesa el ${p.nombre} de NICE 🍵 ¿me das informes?`)
+  const precioTexto = p.precio ? ` ($${p.precio.toFixed(2)} MXN)` : ''
+  document.getElementById('pmodal-pedir').href = pedirLink(`Hola, me interesa el ${p.nombre}${precioTexto} de NICE 🍵 ¿me das informes?`)
   document.getElementById('pmodal-compartir').onclick = () => compartir(p.nombre, `Mira ${p.nombre} en la guía Matcha by NICE 🍵`)
   document.getElementById('pmodal').classList.add('open')
 }

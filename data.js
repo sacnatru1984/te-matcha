@@ -652,7 +652,7 @@ const PRODUCTOS = [
     descripcion: 'Descubre la pureza y la tradición del país del sol naciente en cada sorbo, con nuestro té verde pulverizado. Disfruta de este Matcha Ceremonial 100% puro en su presentación de 28 sobres individuales. Perfecto para quienes buscan llenarse de energía con todos los beneficios del té auténtico de Japón. Lleva tu matcha a donde quiera que vayas.',
     caracteristicas: ['Hoja de té verde molida', 'Bolsa con 28 sobres de 2 gramos c/u'],
     presentacion: '28 sobres de 2 g c/u',
-    precio: 224.50,
+    precio: 369,
     puntos: 18,
   },
   {
@@ -660,7 +660,7 @@ const PRODUCTOS = [
     imagen: 'assets/images/matcha-premium-limon-sobres.png',
     descripcion: 'Té verde matcha premium con un toque de limón, en sobres individuales listos para llevar.',
     presentacion: '28 sobres',
-    precio: null,
+    precio: 369,
   },
   {
     id: 'matcha-premium-sobres', nombre: 'Matcha Premium Quality en Sobres', te: 'matcha',
@@ -669,7 +669,7 @@ const PRODUCTOS = [
     descripcion: 'Descubre la pureza y la tradición de Japón en cada sorbo, con nuestro té verde pulverizado. Disfruta de este Matcha Premium de alta calidad, en su presentación de 28 sobres individuales. Perfecto para quienes buscan una experiencia auténtica y revitalizante. Diluyelo en agua fría o caliente, o utilízalo en postres y bebidas. Lleva tu matcha a donde quiera que vayas.',
     caracteristicas: ['Hoja de té verde molida', 'Bolsa con 28 sobres de 2 gramos c/u', 'Contiene edulcorantes'],
     presentacion: '28 sobres de 2 g c/u',
-    precio: null,
+    precio: 369,
   },
   {
     id: 'matcha-premium-polvo', nombre: 'Matcha Premium Quality en Polvo', te: 'matcha',
@@ -678,7 +678,7 @@ const PRODUCTOS = [
     descripcion: 'Descubre la pureza y la tradición de Japón en cada sorbo, con nuestro té verde pulverizado. Este Matcha Premium de alta calidad es perfecto para quienes buscan una experiencia auténtica y revitalizante. Diluyelo en agua fría o caliente, o utilízalo en postres y bebidas.',
     caracteristicas: ['Hoja de té verde molida', 'Bolsa con 100 gramos', 'Contiene edulcorantes'],
     presentacion: '100 g',
-    precio: null,
+    precio: 469.00,
   },
   {
     id: 'rooibos-red-tea', nombre: 'Rooibos en Sobres', te: 'rooibos',
@@ -687,7 +687,7 @@ const PRODUCTOS = [
     descripcion: 'Disfruta de la riqueza y suavidad de nuestro té rojo pulverizado. Diseñado para ofrecerte una experiencia de sabor única y relajante. En presentación de 28 sobres individuales, es perfecto para tomar con agua o agregarlo en tus postres y bebidas.',
     caracteristicas: ['Rooibos en polvo', 'Bolsa con 28 sobres de 2 gr c/u', 'Contiene edulcorantes'],
     presentacion: '28 sobres de 2 g c/u',
-    precio: null,
+    precio: 369,
   },
 ]
 
