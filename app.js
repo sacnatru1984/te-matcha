@@ -197,6 +197,9 @@ function renderTestimonios() {
   `).join('')
 }
 
+// ── CTA: quiero ser distribuidor ──
+document.getElementById('socio-cta').href = pedirLink('Hola, vi tu página de té y me interesa saber cómo unirme como distribuidor(a) de NICE 🌿')
+
 // ── Init ──
 renderProductos()
 renderRecetas()

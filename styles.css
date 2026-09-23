@@ -84,6 +84,20 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 .quick-card .txt span { font-size: 11.5px; color: var(--muted); }
 .quick-card .chev { color: var(--muted); font-size: 16px; }
 
+/* ── Banner: únete como distribuidor ── */
+.socio-banner {
+  margin: 6px 18px 22px; padding: 18px 18px 20px; border-radius: 16px;
+  background: var(--verde-oscuro); border: 1px solid var(--verde-oscuro); text-align: center;
+}
+.socio-txt b { display: block; font-size: 15px; color: var(--blanco); font-family: 'Cormorant Garamond', serif; }
+.socio-txt span { display: block; font-size: 12px; color: rgba(255,255,255,.7); margin-top: 5px; line-height: 1.5; }
+.btn-socio {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: #C9A227; color: var(--verde-oscuro); text-decoration: none;
+  padding: 12px 22px; border-radius: 30px; margin-top: 14px;
+  font-family: inherit; font-size: 13px; font-weight: 700;
+}
+
 /* ── Encabezado de sección (no Inicio) ── */
 .section-head { padding: 20px 20px 6px; }
 .section-head .eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--verde); font-weight: 700; }
