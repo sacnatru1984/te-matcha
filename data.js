@@ -750,6 +750,26 @@ const PREPARACION_MATCHA = {
   ],
 }
 
+// Preguntas frecuentes — investigadas sobre dudas reales del público
+// (cafeína, embarazo, niños, ejercicio, efectos secundarios).
+const FAQS = [
+  { te: 'matcha', pregunta: '¿Cuánta cafeína tiene el matcha comparado con el café?', respuesta: 'Una taza de matcha tiene entre 60 y 70 mg de cafeína, un poco menos que una taza de café (90–100 mg). La diferencia está en cómo se libera: gracias a la L-teanina, la energía del matcha es más gradual y dura más tiempo, sin los picos ni bajones del café.' },
+  { te: 'matcha', pregunta: '¿Puedo tomar matcha antes de hacer ejercicio?', respuesta: 'Sí, es una excelente opción como pre-entreno. Su combinación de cafeína natural y L-teanina da energía sostenida y enfoque, y puede ayudar a acelerar el metabolismo durante la actividad física.' },
+  { te: 'matcha', pregunta: '¿Es bueno tomar matcha en ayunas, con el estómago vacío?', respuesta: 'No es lo más recomendable. Al igual que con el café, tomarlo con el estómago vacío puede causar molestias digestivas. Lo ideal es disfrutarlo después de desayunar o con algún alimento.' },
+  { te: 'matcha', pregunta: '¿Los niños pueden tomar matcha?', respuesta: 'Por su contenido de cafeína, no se recomienda en niños pequeños. Si buscas una opción para toda la familia, el Rooibos —libre de cafeína— es mejor alternativa para los más chicos.' },
+  { te: 'matcha', pregunta: '¿Cuántas tazas de matcha puedo tomar al día?', respuesta: 'Con moderación, de 1 a 2 tazas al día es lo recomendado para disfrutar sus beneficios sin excederte en cafeína.' },
+  { te: 'matcha', pregunta: '¿Qué diferencia hay entre el Matcha Ceremonial y el Matcha Premium?', respuesta: 'El Ceremonial usa hojas más jóvenes y una molienda más fina, pensada para tomarse solo con agua. El Premium es igual de puro y versátil para diluir en agua fría o caliente, o usar en postres y bebidas.' },
+  { te: 'matcha', pregunta: '¿El matcha ayuda a bajar de peso?', respuesta: 'Puede apoyar tu metabolismo gracias a la termogénesis que favorece, pero no es una fórmula mágica — funciona mejor como parte de una alimentación balanceada y actividad física regular.' },
+  { te: 'matcha', pregunta: '¿Cómo debo guardar el matcha para que no pierda su sabor?', respuesta: 'Guárdalo bien cerrado, en un lugar fresco y seco, lejos de la luz directa y la humedad — así conserva su color, sabor y frescura por más tiempo.' },
+  { te: 'rooibos', pregunta: '¿El rooibos tiene cafeína?', respuesta: 'No. El rooibos es naturalmente libre de cafeína, por lo que puedes disfrutarlo a cualquier hora del día sin que afecte tu descanso.' },
+  { te: 'rooibos', pregunta: '¿El rooibos ayuda a dormir mejor?', respuesta: 'Sí. Al no tener cafeína y tener propiedades relajantes, es una gran opción para tomar en la noche y ayudar a un descanso más profundo.' },
+  { te: 'rooibos', pregunta: '¿Es seguro tomar rooibos en el embarazo?', respuesta: 'En general sí, al no contener cafeína ni teína, pero siempre es buena idea confirmarlo con tu médico antes de incorporarlo a tu rutina.' },
+  { te: 'rooibos', pregunta: '¿Los niños pueden tomar rooibos?', respuesta: 'Sí. Su sabor suave suele gustarles y es una alternativa más saludable a las bebidas azucaradas.' },
+  { te: 'rooibos', pregunta: '¿El rooibos tiene efectos secundarios?', respuesta: 'Es muy bien tolerado y las alergias son poco comunes, pero si tienes alguna condición de salud particular, consulta a tu médico antes de consumirlo con regularidad.' },
+  { te: 'rooibos', pregunta: '¿Cuántas tazas de rooibos puedo tomar al día?', respuesta: 'Puedes disfrutar de 1 a 3 tazas al día sin problema, ya que no tiene cafeína.' },
+  { te: 'rooibos', pregunta: '¿Puedo tomar rooibos si hago ejercicio?', respuesta: 'Sí, es una buena opción para hidratarte y aprovechar sus antioxidantes, sin el efecto estimulante que podría interferir con tu descanso si entrenas por la tarde o noche.' },
+]
+
 // Quiz "¿Qué té es para ti?" — no guarda nada, solo se usa en el momento.
 const QUIZ_PREGUNTAS = [
   {

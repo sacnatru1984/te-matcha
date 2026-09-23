@@ -276,7 +276,29 @@ function renderHistoria() {
     `).join('')}
   `
 
-  block.innerHTML = matchaBlock + rooibosBlock + preparacion + mitos
+  const faqs = `
+    <h3>Preguntas frecuentes</h3>
+    <div class="faq-list">
+      ${FAQS.map((f, i) => `
+        <div class="faq-item">
+          <button class="faq-pregunta" onclick="toggleFaq(${i})">
+            <span>${f.pregunta}</span>
+            <span class="faq-chev" id="faq-chev-${i}">›</span>
+          </button>
+          <div class="faq-respuesta" id="faq-respuesta-${i}">${f.respuesta}</div>
+        </div>
+      `).join('')}
+    </div>
+  `
+
+  block.innerHTML = matchaBlock + rooibosBlock + preparacion + mitos + faqs
+}
+
+function toggleFaq(i) {
+  const respuesta = document.getElementById('faq-respuesta-' + i)
+  const chev = document.getElementById('faq-chev-' + i)
+  const abierta = respuesta.classList.toggle('open')
+  chev.classList.toggle('open', abierta)
 }
 
 // ── Testimonios ──
