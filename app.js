@@ -223,61 +223,71 @@ function verResultadoQuiz() {
   `
 }
 
-// ── Historia / beneficios ──
-function renderOrigen(origen, claseExtra) {
+// ── Historia / beneficios: toda la sección es un acordeón ──
+function accSection(id, titulo, contenidoHtml, accent) {
   return `
-    <h3>${origen.titulo}</h3>
-    <div class="beneficio-item origen ${claseExtra || ''}">
-      ${origen.texto.map(p => `<p>${p}</p>`).join('')}
+    <div class="acc-section ${accent || ''}">
+      <button class="acc-header" onclick="toggleAcc('${id}')">
+        <span>${titulo}</span>
+        <span class="acc-chev" id="acc-chev-${id}">›</span>
+      </button>
+      <div class="acc-wrap" id="acc-wrap-${id}">
+        <div class="acc-inner">${contenidoHtml}</div>
+      </div>
     </div>
   `
+}
+
+function toggleAcc(id) {
+  const wrap = document.getElementById('acc-wrap-' + id)
+  const chev = document.getElementById('acc-chev-' + id)
+  const abierta = wrap.classList.toggle('open')
+  chev.classList.toggle('open', abierta)
 }
 
 function renderHistoria() {
   const block = document.getElementById('beneficios-block')
 
-  const matchaBlock = renderOrigen(ORIGEN_MATCHA) + `
-    <h3>${INFO_TES.matcha.titulo} — Beneficios</h3>
-    ${INFO_TES.matcha.beneficios.map(b => `
-      <div class="beneficio-item">
-        <b>${b.t}</b>
-        <span>${b.d}</span>
-      </div>
-    `).join('')}
+  const origenMatchaHtml = `
+    <div class="beneficio-item origen">
+      ${ORIGEN_MATCHA.texto.map(p => `<p>${p}</p>`).join('')}
+    </div>
   `
+  const beneficiosMatchaHtml = INFO_TES.matcha.beneficios.map(b => `
+    <div class="beneficio-item">
+      <b>${b.t}</b>
+      <span>${b.d}</span>
+    </div>
+  `).join('')
 
-  const rooibosBlock = renderOrigen(ORIGEN_ROOIBOS, 'rooibos') + `
+  const origenRooibosHtml = `
+    <div class="beneficio-item origen rooibos">
+      ${ORIGEN_ROOIBOS.texto.map(p => `<p>${p}</p>`).join('')}
+    </div>
     <div class="fuente-nota">Fuente: información general de dominio público — NICE aún no publica su propia reseña de origen para el rooibos.</div>
-    <h3>${INFO_TES.rooibos.titulo} — Beneficios</h3>
-    ${INFO_TES.rooibos.beneficios.map(b => `
-      <div class="beneficio-item rooibos">
-        <b>${b.t}</b>
-        <span>${b.d}</span>
-      </div>
-    `).join('')}
   `
+  const beneficiosRooibosHtml = INFO_TES.rooibos.beneficios.map(b => `
+    <div class="beneficio-item rooibos">
+      <b>${b.t}</b>
+      <span>${b.d}</span>
+    </div>
+  `).join('')
 
-  const preparacion = `
-    <h3>${PREPARACION_MATCHA.titulo}</h3>
-    ${PREPARACION_MATCHA.items.map(it => `
-      <div class="beneficio-item prep">
-        <b>${it.t}</b>
-        <span>${it.d}</span>
-      </div>
-    `).join('')}
-  `
-  const mitos = `
-    <h3>Mitos y verdades</h3>
-    ${MITOS.map(m => `
-      <div class="mito-item">
-        <div class="mito">✗ ${m.mito}</div>
-        <div class="verdad">✓ ${m.verdad}</div>
-      </div>
-    `).join('')}
-  `
+  const preparacionHtml = PREPARACION_MATCHA.items.map(it => `
+    <div class="beneficio-item prep">
+      <b>${it.t}</b>
+      <span>${it.d}</span>
+    </div>
+  `).join('')
 
-  const faqs = `
-    <h3>Preguntas frecuentes</h3>
+  const mitosHtml = MITOS.map(m => `
+    <div class="mito-item">
+      <div class="mito">✗ ${m.mito}</div>
+      <div class="verdad">✓ ${m.verdad}</div>
+    </div>
+  `).join('')
+
+  const faqsHtml = `
     <div class="faq-list">
       ${FAQS.map((f, i) => `
         <div class="faq-item">
@@ -291,7 +301,15 @@ function renderHistoria() {
     </div>
   `
 
-  block.innerHTML = matchaBlock + rooibosBlock + preparacion + mitos + faqs
+  block.innerHTML = [
+    accSection('origen-matcha', 'Origen del Matcha', origenMatchaHtml),
+    accSection('beneficios-matcha', INFO_TES.matcha.titulo + ' — Beneficios', beneficiosMatchaHtml),
+    accSection('origen-rooibos', 'Origen del Rooibos', origenRooibosHtml, 'rooibos'),
+    accSection('beneficios-rooibos', INFO_TES.rooibos.titulo + ' — Beneficios', beneficiosRooibosHtml, 'rooibos'),
+    accSection('preparacion', PREPARACION_MATCHA.titulo, preparacionHtml, 'gold'),
+    accSection('mitos', 'Mitos y verdades', mitosHtml),
+    accSection('faqs', 'Preguntas frecuentes', faqsHtml),
+  ].join('')
 }
 
 function toggleFaq(i) {

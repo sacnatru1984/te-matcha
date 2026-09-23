@@ -234,10 +234,27 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 .precio-modal { font-size: 22px; font-weight: 700; color: var(--verde-oscuro); margin: 4px 0 2px; }
 .modal-body .descripcion { font-size: 13.5px; color: var(--texto); line-height: 1.6; margin-top: 14px; }
 
-/* ── Historia ── */
-.beneficios-block { padding: 6px 20px 8px; }
-.beneficios-block h3 { font-size: 20px; color: var(--verde-oscuro); margin: 18px 0 10px; }
-.beneficio-item { background: var(--blanco); border-radius: 14px; padding: 13px 16px; margin-bottom: 10px; border: 1px solid var(--borde); box-shadow: var(--sombra); }
+/* ── Historia: acordeón general ── */
+.beneficios-block { padding: 14px 20px 8px; display: flex; flex-direction: column; gap: 10px; }
+.acc-section { background: var(--blanco); border-radius: 14px; border: 1px solid var(--borde); box-shadow: var(--sombra); border-left: 3px solid var(--verde); overflow: hidden; }
+.acc-section.rooibos { border-left-color: var(--rooibos); }
+.acc-section.gold { border-left-color: #C9A227; }
+.acc-header {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: none; border: none; text-align: left; cursor: pointer;
+  padding: 15px 16px; font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--verde-oscuro);
+}
+.acc-chev { font-size: 17px; color: var(--muted); flex-shrink: 0; transform: rotate(90deg); transition: transform .2s ease; font-family: 'Inter', sans-serif; }
+.acc-chev.open { transform: rotate(-90deg); }
+.acc-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s ease; }
+.acc-wrap.open { grid-template-rows: 1fr; }
+.acc-inner { overflow: hidden; min-height: 0; }
+.acc-wrap .acc-inner { padding: 0 16px; }
+.acc-wrap.open .acc-inner { padding: 0 16px 16px; }
+.acc-inner .beneficio-item, .acc-inner .mito-item, .acc-inner .faq-list { margin-bottom: 10px; }
+.acc-inner > *:last-child { margin-bottom: 0; }
+
+.beneficio-item { background: var(--verde-fondo); border-radius: 14px; padding: 13px 16px; margin-bottom: 10px; border: 1px solid var(--borde); }
 .beneficio-item b { display: block; font-size: 13.5px; color: var(--verde-oscuro); margin-bottom: 3px; }
 .beneficio-item.rooibos { border-left: 3px solid var(--rooibos); }
 .beneficio-item:not(.rooibos) { border-left: 3px solid var(--verde); }
