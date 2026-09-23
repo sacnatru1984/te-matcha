@@ -141,6 +141,88 @@ document.addEventListener('keydown', ev => {
   cerrarPModal()
 })
 
+// ── Quiz "¿Qué té es para ti?" (sin guardar nada, solo uso en el momento) ──
+function renderQuizPreguntas() {
+  document.getElementById('quiz-preguntas').innerHTML = QUIZ_PREGUNTAS.map((p, i) => `
+    <div class="quiz-pregunta">
+      <b>${i + 1}. ${p.pregunta}</b>
+      ${p.opciones.map((o, j) => `
+        <label class="quiz-opcion">
+          <input type="radio" name="q${i}" value="${o.te}" ${j === 0 ? 'checked' : ''}>
+          <span>${o.texto}</span>
+        </label>
+      `).join('')}
+    </div>
+  `).join('')
+}
+
+function abrirQuiz() {
+  renderQuizPreguntas()
+  document.getElementById('quiz-resultado').innerHTML = ''
+  document.getElementById('quiz-preguntas').style.display = ''
+  document.getElementById('quiz-btn').style.display = ''
+  document.getElementById('qmodal').classList.add('open')
+}
+
+function cerrarQuiz() {
+  document.getElementById('qmodal').classList.remove('open')
+}
+document.getElementById('qmodal').addEventListener('click', ev => {
+  if (ev.target.id === 'qmodal') cerrarQuiz()
+})
+
+function verResultadoQuiz() {
+  const puntos = { matcha: 0, rooibos: 0 }
+  QUIZ_PREGUNTAS.forEach((_, i) => {
+    const elegido = document.querySelector(`input[name="q${i}"]:checked`)
+    if (elegido) puntos[elegido.value]++
+  })
+  const te = puntos.matcha >= puntos.rooibos ? 'matcha' : 'rooibos'
+  const info = INFO_TES[te]
+  const nombreTe = te === 'matcha' ? 'Matcha' : 'Rooibos'
+  const producto = PRODUCTOS.find(p => p.te === te)
+  const recetas = RECETAS.filter(r => r.te === te).slice(0, 2)
+
+  document.getElementById('quiz-preguntas').style.display = 'none'
+  document.getElementById('quiz-btn').style.display = 'none'
+  document.getElementById('quiz-resultado').innerHTML = `
+    <div class="quiz-resultado-card ${te}">
+      <div class="tag">Tu recomendación</div>
+      <h3>${nombreTe}</h3>
+      <ul>
+        ${info.beneficios.slice(0, 2).map(b => `<li><b>${b.t}</b> — ${b.d}</li>`).join('')}
+      </ul>
+    </div>
+    ${producto ? `
+      <h4>Producto recomendado</h4>
+      <div class="producto-card ${te}" onclick="cerrarQuiz(); abrirProducto('${producto.id}')">
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <div class="body">
+          <div class="tag">${nombreTe}</div>
+          <h3>${producto.nombre}</h3>
+          <div class="meta">
+            <span>${producto.presentacion}</span>
+            ${producto.precio ? `<span class="precio">$${producto.precio.toFixed(2)} MXN</span>` : ''}
+          </div>
+        </div>
+      </div>
+    ` : ''}
+    ${recetas.length ? `
+      <h4>Recetas para empezar</h4>
+      ${recetas.map(r => `
+        <div class="receta-card ${te}" onclick="cerrarQuiz(); abrirReceta('${r.id}')">
+          <img src="${r.imagen}" alt="${r.nombre}">
+          <div class="body">
+            <div class="tag">${nombreTe} · ${r.tipo === 'bebida' ? 'Bebida' : 'Platillo'}</div>
+            <h3>${r.nombre}</h3>
+          </div>
+        </div>
+      `).join('')}
+    ` : ''}
+    <button class="btn-compartir quiz-repetir" onclick="abrirQuiz()">Volver a responder</button>
+  `
+}
+
 // ── Historia / beneficios ──
 function renderOrigen(origen, claseExtra) {
   return `
@@ -184,7 +266,17 @@ function renderHistoria() {
       </div>
     `).join('')}
   `
-  block.innerHTML = matchaBlock + rooibosBlock + preparacion
+  const mitos = `
+    <h3>Mitos y verdades</h3>
+    ${MITOS.map(m => `
+      <div class="mito-item">
+        <div class="mito">✗ ${m.mito}</div>
+        <div class="verdad">✓ ${m.verdad}</div>
+      </div>
+    `).join('')}
+  `
+
+  block.innerHTML = matchaBlock + rooibosBlock + preparacion + mitos
 }
 
 // ── Testimonios ──

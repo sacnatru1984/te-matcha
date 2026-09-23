@@ -174,6 +174,35 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
   color: var(--verde-oscuro); font-family: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer;
 }
 
+/* ── Quiz "¿Qué té es para ti?" ── */
+.quiz-pregunta { margin-top: 20px; }
+.quiz-pregunta b { display: block; font-size: 13.5px; color: var(--verde-oscuro); margin-bottom: 10px; }
+.quiz-opcion {
+  display: flex; align-items: center; gap: 10px; padding: 11px 14px; margin-bottom: 8px;
+  border: 1px solid var(--borde); border-radius: 12px; cursor: pointer; background: var(--blanco);
+}
+.quiz-opcion input { accent-color: var(--verde-oscuro); width: 16px; height: 16px; flex-shrink: 0; }
+.quiz-opcion span { font-size: 13px; color: var(--texto); }
+.quiz-btn { width: 100%; justify-content: center; margin-top: 22px; }
+.quiz-resultado-card {
+  margin-top: 6px; padding: 16px; border-radius: 14px; background: var(--verde-fondo);
+  border-left: 3px solid var(--verde);
+}
+.quiz-resultado-card.rooibos { background: var(--rooibos-claro); border-left-color: var(--rooibos); }
+.quiz-resultado-card .tag { color: var(--verde); }
+.quiz-resultado-card.rooibos .tag { color: var(--rooibos); }
+.quiz-resultado-card h3 { font-size: 22px; color: var(--verde-oscuro); margin: 2px 0 10px; }
+.quiz-resultado-card ul { padding-left: 18px; }
+.quiz-resultado-card ul li { font-size: 12.5px; color: var(--texto); margin-bottom: 6px; line-height: 1.5; }
+#quiz-resultado h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--verde-oscuro); margin: 18px 0 8px; }
+#quiz-resultado .producto-card, #quiz-resultado .receta-card { margin-bottom: 10px; }
+.quiz-repetir { width: 100%; margin-top: 8px; }
+
+/* ── Mitos y verdades ── */
+.mito-item { background: var(--blanco); border-radius: 14px; padding: 13px 16px; margin-bottom: 10px; border: 1px solid var(--borde); box-shadow: var(--sombra); }
+.mito-item .mito { font-size: 12.5px; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--rooibos); }
+.mito-item .verdad { font-size: 13px; color: var(--texto); margin-top: 6px; font-weight: 500; }
+
 /* ── Productos ── */
 .productos-grid { padding: 12px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
 .producto-card { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); border: 1px solid var(--borde); display: flex; flex-direction: row; align-items: stretch; cursor: pointer; }

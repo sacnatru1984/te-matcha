@@ -750,6 +750,40 @@ const PREPARACION_MATCHA = {
   ],
 }
 
+// Quiz "¿Qué té es para ti?" — no guarda nada, solo se usa en el momento.
+const QUIZ_PREGUNTAS = [
+  {
+    pregunta: '¿Qué buscas principalmente?',
+    opciones: [
+      { texto: 'Energía y enfoque mental', te: 'matcha' },
+      { texto: 'Relajarme y descansar mejor', te: 'rooibos' },
+    ],
+  },
+  {
+    pregunta: '¿En qué momento del día lo tomarías más?',
+    opciones: [
+      { texto: 'En la mañana, antes de trabajar o estudiar', te: 'matcha' },
+      { texto: 'En la tarde o noche, para relajarme', te: 'rooibos' },
+    ],
+  },
+  {
+    pregunta: '¿Te preocupa la cafeína?',
+    opciones: [
+      { texto: 'No, me gusta sentir un empujón de energía', te: 'matcha' },
+      { texto: 'Sí, prefiero evitarla', te: 'rooibos' },
+    ],
+  },
+]
+
+// Mitos y verdades — contenido para generar confianza antes de la compra.
+const MITOS = [
+  { mito: 'El matcha da los mismos nervios y bajón que el café.', verdad: 'Gracias a la L-teanina, la energía del matcha es sostenida y sin los picos ni bajones típicos del café.' },
+  { mito: 'Todo el matcha en polvo es igual, no importa cuál compres.', verdad: 'La calidad importa: hojas cultivadas a la sombra y molidas lentamente dan un color y sabor muy distintos a un matcha genérico.' },
+  { mito: 'El matcha sabe muy amargo.', verdad: 'Bien preparado — con agua que no esté hirviendo — tiene un sabor umami suave, no amargo.' },
+  { mito: 'El rooibos es "té de segunda", sin beneficios reales.', verdad: 'Tiene beneficios propios: no contiene cafeína y ayuda a relajarte, algo que el matcha no ofrece.' },
+  { mito: 'Si tomo té en la noche no voy a poder dormir.', verdad: 'Con Rooibos sí puedes — al no tener cafeína, es una excelente opción para las noches.' },
+]
+
 const INFO_TES = {
   matcha: {
     titulo: 'Matcha',

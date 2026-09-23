@@ -42,6 +42,11 @@
       <button class="btn-primary" onclick="irA('productos')">Explorar productos →</button>
     </div>
     <div class="quick-links">
+      <div class="quick-card" onclick="abrirQuiz()">
+        <div class="icon">🎯</div>
+        <div class="txt"><b>¿Qué té es para ti?</b><span>Responde 3 preguntas y te decimos</span></div>
+        <div class="chev">›</div>
+      </div>
       <div class="quick-card" onclick="irA('recetas')">
         <div class="icon">📖</div>
         <div class="txt"><b>Recetario</b><span>33 recetas con Matcha y Rooibos</span></div>
@@ -186,6 +191,21 @@
         <a id="pmodal-pedir" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">📲 Pedir por WhatsApp</a>
         <button id="pmodal-compartir" class="btn-compartir">Compartir ↗</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL QUIZ ═══ -->
+<div class="modal-overlay" id="qmodal">
+  <div class="modal-sheet">
+    <button class="modal-close" onclick="cerrarQuiz()">✕</button>
+    <div class="modal-body">
+      <div class="tag">Quiz</div>
+      <h2>¿Qué té es para ti?</h2>
+      <div class="porciones">Responde y te decimos cuál te conviene más</div>
+      <div id="quiz-preguntas"></div>
+      <button class="btn-primary quiz-btn" id="quiz-btn" onclick="verResultadoQuiz()">Ver mi recomendación →</button>
+      <div id="quiz-resultado"></div>
     </div>
   </div>
 </div>
