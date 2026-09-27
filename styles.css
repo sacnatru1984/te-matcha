@@ -152,6 +152,8 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
   position: fixed; inset: 0; background: rgba(20,49,31,.55); z-index: 100;
   display: none; align-items: flex-end; justify-content: center;
 }
+/* La receta se puede abrir desde dentro del Plan de 7 días — debe quedar encima */
+#modal.modal-overlay { z-index: 110; }
 .modal-overlay.open { display: flex; }
 .modal-sheet {
   background: var(--crema); width: 100%; max-width: 480px; max-height: 88vh; overflow-y: auto;

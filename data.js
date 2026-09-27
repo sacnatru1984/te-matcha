@@ -931,15 +931,18 @@ const FAQS = [
   { te: 'rooibos', pregunta: '¿Puedo tomar rooibos si hago ejercicio?', respuesta: 'Sí, es una buena opción para hidratarte y aprovechar sus antioxidantes, sin el efecto estimulante que podría interferir con tu descanso si entrenas por la tarde o noche.' },
 ]
 
-// Plan de 7 días — contenido fijo, no guarda progreso, solo sugiere una receta por día.
+// Plan de 7 días — no guarda progreso. Cada día tiene un "papel" fijo
+// (nota) pero varias recetas candidatas: la app elige una según la semana
+// del año, así todos los que entren la misma semana ven el mismo plan, y
+// cambia solo cada semana sin tocar código ni guardar nada por visitante.
 const PLAN_7_DIAS = [
-  { dia: 1, recetaId: 'matcha-tradicional', nota: 'Empieza por lo clásico: conoce el sabor puro del matcha.' },
-  { dia: 2, recetaId: 'rooibos-latte', nota: 'Para la tarde — sin cafeína, ideal si buscas relajarte.' },
-  { dia: 3, recetaId: 'iced-matcha', nota: 'Un día más activo pide algo refrescante y con energía.' },
-  { dia: 4, recetaId: 'hotcakes-matcha', nota: 'Date un desayuno especial con matcha.' },
-  { dia: 5, recetaId: 'limonada-rooibos', nota: 'A media semana, refréscate con rooibos.' },
-  { dia: 6, recetaId: 'matcha-frappe-avena', nota: 'Fin de semana: date un gusto tipo cafetería.' },
-  { dia: 7, recetaId: 'tiramisu-matcha', nota: 'Cierra tu semana con un postre que se siente como premio.' },
+  { dia: 1, nota: 'Empieza por lo clásico: conoce el sabor puro del matcha.', recetaIds: ['matcha-tradicional', 'matcha-latte'] },
+  { dia: 2, nota: 'Para la tarde — sin cafeína, ideal si buscas relajarte.', recetaIds: ['rooibos-latte', 'rooibos-calientito-miel'] },
+  { dia: 3, nota: 'Un día más activo pide algo refrescante y con energía.', recetaIds: ['iced-matcha', 'matcha-soda', 'limonada-matcha'] },
+  { dia: 4, nota: 'Date un desayuno especial con matcha.', recetaIds: ['hotcakes-matcha', 'pancakes-matcha-avena'] },
+  { dia: 5, nota: 'A media semana, refréscate con rooibos.', recetaIds: ['limonada-rooibos', 'rooibos-sangria'] },
+  { dia: 6, nota: 'Fin de semana: date un gusto tipo cafetería.', recetaIds: ['matcha-frappe-avena', 'matcha-latte-arroz', 'matcha-affogato'] },
+  { dia: 7, nota: 'Cierra tu semana con un postre que se siente como premio.', recetaIds: ['tiramisu-matcha', 'helado-te-matcha', 'galletas-matcha-choc-blanco'] },
 ]
 
 // Quiz "¿Qué té es para ti?" — no guarda nada, solo se usa en el momento.

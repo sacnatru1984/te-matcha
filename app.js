@@ -377,13 +377,23 @@ function renderTestimonios() {
   `).join('')
 }
 
-// ── Plan de 7 días (contenido fijo, no guarda progreso) ──
+// ── Plan de 7 días (contenido fijo por día, receta rotativa por semana) ──
+function numeroDeSemana(fecha = new Date()) {
+  const d = new Date(Date.UTC(fecha.getFullYear(), fecha.getMonth(), fecha.getDate()))
+  const diaISO = d.getUTCDay() || 7
+  d.setUTCDate(d.getUTCDate() + 4 - diaISO)
+  const inicioAno = new Date(Date.UTC(d.getUTCFullYear(), 0, 1))
+  return Math.ceil((((d - inicioAno) / 86400000) + 1) / 7)
+}
+
 function renderPlan() {
+  const semana = numeroDeSemana()
   document.getElementById('plan-lista').innerHTML = PLAN_7_DIAS.map(d => {
-    const r = RECETAS.find(x => x.id === d.recetaId)
+    const recetaId = d.recetaIds[(semana + d.dia) % d.recetaIds.length]
+    const r = RECETAS.find(x => x.id === recetaId)
     if (!r) return ''
     return `
-      <div class="plan-dia" onclick="cerrarPlan(); abrirReceta('${r.id}')">
+      <div class="plan-dia" onclick="abrirReceta('${r.id}')">
         <div class="plan-dia-num">${d.dia}</div>
         <div class="plan-dia-img"><img src="${r.imagen}" alt="${r.nombre}"></div>
         <div class="plan-dia-body">
