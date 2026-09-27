@@ -737,7 +737,7 @@ const RECETAS = [
   // ── MATCHA · BEBIDAS (nuevas) ──
   {
     id: 'shot-matcha-almendra', te: 'matcha', tipo: 'bebida', nombre: 'Shot Energizante de Matcha y Almendra',
-    porciones: '2', imagen: 'assets/images/shot-matcha-almendra.jpeg',
+    porciones: '2', imagen: 'assets/images/shot-matcha-almendra.png',
     ingredientes: [
       '1 taza de leche de almendra sabor vainilla',
       '1 cucharadita de NICE Imperial Matcha Green Tea',
@@ -752,7 +752,7 @@ const RECETAS = [
   },
   {
     id: 'matcha-coco-limon', te: 'matcha', tipo: 'bebida', nombre: 'Matcha con Agua de Coco y Limón',
-    porciones: '1', imagen: 'assets/images/matcha-coco-limon.jpeg',
+    porciones: '1', imagen: 'assets/images/matcha-coco-limon.png',
     ingredientes: [
       '1 cucharadita de NICE Imperial Matcha Green Tea',
       '200 ml de agua de coco natural',
