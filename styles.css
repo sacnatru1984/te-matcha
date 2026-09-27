@@ -129,12 +129,23 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
   box-shadow: var(--sombra); border: 1px solid var(--borde); cursor: pointer;
   display: flex; flex-direction: row; align-items: stretch;
 }
-.receta-card img { width: 118px; flex-shrink: 0; height: auto; object-fit: cover; background: var(--verde-fondo); display: block; }
+.receta-card .img-wrap { position: relative; width: 118px; flex-shrink: 0; }
+.receta-card .img-wrap img { width: 118px; height: 100%; object-fit: cover; background: var(--verde-fondo); display: block; }
 .receta-card .body { padding: 13px 16px; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
 .receta-card .tag { font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--verde); }
 .receta-card.rooibos .tag { color: var(--rooibos); }
 .receta-card h3 { font-size: 18px; color: var(--verde-oscuro); margin-top: 3px; }
 .receta-card .porciones { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+
+/* ── Favoritos ── */
+.fav-btn {
+  border: none; background: rgba(255,255,255,.85); color: var(--rooibos); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; font-size: 16px; line-height: 1;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.fav-btn.active { color: #e0264f; }
+.card-fav.fav-btn { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 50%; }
+#modal-fav-btn.fav-btn { position: absolute; top: 14px; right: 56px; width: 32px; height: 32px; border-radius: 50%; font-size: 18px; z-index: 5; }
 
 /* ── Modal de receta ── */
 .modal-overlay {
@@ -144,7 +155,7 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 .modal-overlay.open { display: flex; }
 .modal-sheet {
   background: var(--crema); width: 100%; max-width: 480px; max-height: 88vh; overflow-y: auto;
-  border-radius: 22px 22px 0 0; animation: slideup .25s ease;
+  border-radius: 22px 22px 0 0; animation: slideup .25s ease; position: relative;
 }
 @keyframes slideup { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .modal-sheet img { width: 100%; height: 240px; object-fit: contain; background: var(--verde-fondo); }
@@ -189,6 +200,22 @@ h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
   font-size: 12.5px; color: var(--muted); line-height: 1.55;
 }
 .faq-respuesta.open { max-height: 220px; padding: 0 16px 14px; }
+
+/* ── Plan de 7 días ── */
+.plan-dia {
+  display: flex; align-items: center; gap: 12px; background: var(--blanco); border-radius: 14px;
+  padding: 10px; margin-top: 12px; border: 1px solid var(--borde); box-shadow: var(--sombra); cursor: pointer;
+}
+.plan-dia-num {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--verde-oscuro); color: var(--blanco);
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0;
+}
+.plan-dia-img { width: 56px; height: 56px; border-radius: 10px; overflow: hidden; flex-shrink: 0; background: var(--verde-fondo); }
+.plan-dia-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.plan-dia-body { min-width: 0; }
+.plan-dia-body .tag { font-size: 9px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--verde); }
+.plan-dia-body h3 { font-size: 14.5px; color: var(--verde-oscuro); margin: 2px 0; }
+.plan-dia-body span { font-size: 11.5px; color: var(--muted); }
 
 /* ── Quiz "¿Qué té es para ti?" ── */
 .quiz-pregunta { margin-top: 20px; }

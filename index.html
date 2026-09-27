@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Matcha by NICE — Guía y Recetario</title>
-<meta name="description" content="Guía de productos, recetas y beneficios de NICE Imperial Matcha Green Tea y NICE Rooibos Red Tea.">
+<meta name="description" content="Guía de productos, 41 recetas y beneficios de NICE Imperial Matcha Green Tea y NICE Rooibos Red Tea.">
 
 <!-- Favicon: taza de matcha, verde de marca -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232D6A4F'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%8D%B5%3C/text%3E%3C/svg%3E">
@@ -12,7 +12,7 @@
 <!-- Open Graph: para que se vea bien al compartir el link por WhatsApp/redes -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Matcha by NICE — Guía y Recetario">
-<meta property="og:description" content="Productos, 33 recetas y beneficios de NICE Imperial Matcha Green Tea y NICE Rooibos Red Tea.">
+<meta property="og:description" content="Productos, 41 recetas y beneficios de NICE Imperial Matcha Green Tea y NICE Rooibos Red Tea.">
 <meta property="og:image" content="https://te-matcha-delta.vercel.app/assets/images/cover.jpeg">
 <meta property="og:url" content="https://te-matcha-delta.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
@@ -47,9 +47,14 @@
         <div class="txt"><b>¿Qué té es para ti?</b><span>Responde 3 preguntas y te decimos</span></div>
         <div class="chev">›</div>
       </div>
+      <div class="quick-card" onclick="abrirPlan()">
+        <div class="icon">📅</div>
+        <div class="txt"><b>Plan de 7 días</b><span>Una receta distinta cada día</span></div>
+        <div class="chev">›</div>
+      </div>
       <div class="quick-card" onclick="irA('recetas')">
         <div class="icon">📖</div>
-        <div class="txt"><b>Recetario</b><span>33 recetas con Matcha y Rooibos</span></div>
+        <div class="txt"><b>Recetario</b><span>41 recetas con Matcha y Rooibos</span></div>
         <div class="chev">›</div>
       </div>
       <div class="quick-card" onclick="irA('testimonios')">
@@ -103,6 +108,7 @@
       <button class="pill" data-filtro="rooibos">Rooibos</button>
       <button class="pill" data-filtro="bebida">Bebidas</button>
       <button class="pill" data-filtro="platillo">Platillos</button>
+      <button class="pill" data-filtro="favoritos">❤️ Favoritos</button>
     </div>
     <div class="recetas-grid" id="recetas-grid"></div>
     <div class="recetas-vacio" id="recetas-vacio" style="display:none">No encontramos recetas con eso — prueba con otra palabra.</div>
@@ -156,6 +162,7 @@
   <div class="modal-sheet">
     <button class="modal-close" onclick="cerrarModal()">✕</button>
     <img id="modal-img" src="" alt="">
+    <button class="fav-btn" id="modal-fav-btn" onclick="toggleFavoritoModal()">♡</button>
     <div class="modal-body">
       <div class="tag" id="modal-tag"></div>
       <h2 id="modal-nombre"></h2>
@@ -206,6 +213,19 @@
       <div id="quiz-preguntas"></div>
       <button class="btn-primary quiz-btn" id="quiz-btn" onclick="verResultadoQuiz()">Ver mi recomendación →</button>
       <div id="quiz-resultado"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL PLAN 7 DÍAS ═══ -->
+<div class="modal-overlay" id="planmodal">
+  <div class="modal-sheet">
+    <button class="modal-close" onclick="cerrarPlan()">✕</button>
+    <div class="modal-body">
+      <div class="tag">Plan de 7 días</div>
+      <h2>Una semana con NICE</h2>
+      <div class="porciones">Una receta distinta cada día — tócala para ver los detalles</div>
+      <div id="plan-lista"></div>
     </div>
   </div>
 </div>

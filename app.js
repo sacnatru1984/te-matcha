@@ -70,23 +70,55 @@ document.getElementById('pmodal').addEventListener('click', ev => {
   if (ev.target.id === 'pmodal') cerrarPModal()
 })
 
+// ── Favoritos (guardados en el teléfono, no en servidor) ──
+const FAV_KEY = 'tematcha_favoritos'
+function getFavoritos() {
+  try {
+    return JSON.parse(localStorage.getItem(FAV_KEY)) || []
+  } catch {
+    return []
+  }
+}
+function esFavorito(id) {
+  return getFavoritos().includes(id)
+}
+function toggleFavorito(id, ev) {
+  if (ev) ev.stopPropagation()
+  let favs = getFavoritos()
+  favs = favs.includes(id) ? favs.filter(f => f !== id) : [...favs, id]
+  try {
+    localStorage.setItem(FAV_KEY, JSON.stringify(favs))
+  } catch {}
+  renderRecetas()
+  if (recetaModalAbierta === id) actualizarBotonFavModal(id)
+}
+
 // ── Recetas ──
 let filtroActivo = 'todas'
 let busquedaActiva = ''
+let recetaModalAbierta = null
 
 function renderRecetas() {
   const grid = document.getElementById('recetas-grid')
   const q = busquedaActiva.trim().toLowerCase()
+  const favs = getFavoritos()
   const lista = RECETAS.filter(r => {
+    if (filtroActivo === 'favoritos') return favs.includes(r.id)
     if (filtroActivo !== 'todas' && r.te !== filtroActivo && r.tipo !== filtroActivo) return false
     if (q && !r.nombre.toLowerCase().includes(q) && !r.ingredientes.some(i => i.toLowerCase().includes(q))) return false
     return true
   })
   const vacio = document.getElementById('recetas-vacio')
   vacio.style.display = lista.length ? 'none' : ''
+  vacio.textContent = filtroActivo === 'favoritos'
+    ? 'Aún no tienes favoritos — toca el ♡ en las recetas que te gusten.'
+    : 'No encontramos recetas con eso — prueba con otra palabra.'
   grid.innerHTML = lista.map(r => `
     <div class="receta-card ${r.te}" onclick="abrirReceta('${r.id}')">
-      <img src="${r.imagen}" alt="${r.nombre}">
+      <div class="img-wrap">
+        <img src="${r.imagen}" alt="${r.nombre}">
+        <button class="fav-btn card-fav ${esFavorito(r.id) ? 'active' : ''}" onclick="toggleFavorito('${r.id}', event)">${esFavorito(r.id) ? '♥' : '♡'}</button>
+      </div>
       <div class="body">
         <div class="tag">${r.te === 'matcha' ? 'Matcha' : 'Rooibos'} · ${r.tipo === 'bebida' ? 'Bebida' : 'Platillo'}</div>
         <h3>${r.nombre}</h3>
@@ -111,9 +143,22 @@ document.getElementById('recetas-buscador').addEventListener('input', ev => {
   renderRecetas()
 })
 
+function actualizarBotonFavModal(id) {
+  const btn = document.getElementById('modal-fav-btn')
+  const activo = esFavorito(id)
+  btn.classList.toggle('active', activo)
+  btn.textContent = activo ? '♥' : '♡'
+}
+
+function toggleFavoritoModal() {
+  if (!recetaModalAbierta) return
+  toggleFavorito(recetaModalAbierta)
+}
+
 function abrirReceta(id) {
   const r = RECETAS.find(x => x.id === id)
   if (!r) return
+  recetaModalAbierta = id
   document.getElementById('modal-img').src = r.imagen
   document.getElementById('modal-img').alt = r.nombre
   document.getElementById('modal-tag').textContent = (r.te === 'matcha' ? 'Matcha' : 'Rooibos') + ' · ' + (r.tipo === 'bebida' ? 'Bebida' : 'Platillo')
@@ -125,11 +170,13 @@ function abrirReceta(id) {
   document.getElementById('modal-pedir').href = pedirLink(`Hola, vi la receta "${r.nombre}" en la app Matcha by NICE y quiero pedir mi ${teNombre} 🍵`)
   document.getElementById('modal-pedir').textContent = `📲 Pide tu ${teNombre} para esta receta`
   document.getElementById('modal-compartir').onclick = () => compartir(r.nombre, `Mira esta receta de ${r.nombre} en la guía Matcha by NICE 🍵`)
+  actualizarBotonFavModal(id)
   document.getElementById('modal').classList.add('open')
 }
 
 function cerrarModal() {
   document.getElementById('modal').classList.remove('open')
+  recetaModalAbierta = null
 }
 document.getElementById('modal').addEventListener('click', ev => {
   if (ev.target.id === 'modal') cerrarModal()
@@ -139,6 +186,7 @@ document.addEventListener('keydown', ev => {
   if (ev.key !== 'Escape') return
   cerrarModal()
   cerrarPModal()
+  cerrarPlan()
 })
 
 // ── Quiz "¿Qué té es para ti?" (sin guardar nada, solo uso en el momento) ──
@@ -328,6 +376,36 @@ function renderTestimonios() {
     </div>
   `).join('')
 }
+
+// ── Plan de 7 días (contenido fijo, no guarda progreso) ──
+function renderPlan() {
+  document.getElementById('plan-lista').innerHTML = PLAN_7_DIAS.map(d => {
+    const r = RECETAS.find(x => x.id === d.recetaId)
+    if (!r) return ''
+    return `
+      <div class="plan-dia" onclick="cerrarPlan(); abrirReceta('${r.id}')">
+        <div class="plan-dia-num">${d.dia}</div>
+        <div class="plan-dia-img"><img src="${r.imagen}" alt="${r.nombre}"></div>
+        <div class="plan-dia-body">
+          <div class="tag">${r.te === 'matcha' ? 'Matcha' : 'Rooibos'} · ${r.tipo === 'bebida' ? 'Bebida' : 'Platillo'}</div>
+          <h3>${r.nombre}</h3>
+          <span>${d.nota}</span>
+        </div>
+      </div>
+    `
+  }).join('')
+}
+
+function abrirPlan() {
+  renderPlan()
+  document.getElementById('planmodal').classList.add('open')
+}
+function cerrarPlan() {
+  document.getElementById('planmodal').classList.remove('open')
+}
+document.getElementById('planmodal').addEventListener('click', ev => {
+  if (ev.target.id === 'planmodal') cerrarPlan()
+})
 
 // ── CTA: quiero ser distribuidor ──
 document.getElementById('socio-cta').href = pedirLink('Hola, vi tu página de té y me interesa saber cómo unirme como distribuidor(a) de NICE 🌿')
