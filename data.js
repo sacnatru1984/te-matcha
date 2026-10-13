@@ -403,7 +403,7 @@ const RECETAS = [
   // ── MATCHA · de "El Arte del Matcha: Origen, Beneficios y Recetas" ──
   {
     id: 'matcha-tradicional', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Tradicional',
-    porciones: '1', imagen: 'assets/images/matcha-tradicional.png',
+    porciones: '1', imagen: 'assets/images/matcha-tradicional.jpg',
     ingredientes: [
       '2 cucharaditas de Té Matcha grado ceremonial',
       '70 ml de agua caliente (90°C)',
@@ -417,7 +417,7 @@ const RECETAS = [
   },
   {
     id: 'tiramisu-matcha', te: 'matcha', tipo: 'platillo', nombre: 'Tiramisú con Matcha NICE',
-    porciones: '4', imagen: 'assets/images/tiramisu-matcha.png',
+    porciones: '4', imagen: 'assets/images/tiramisu-matcha.jpg',
     ingredientes: [
       '2 cditas de NICE Imperial Matcha Green Tea',
       '250 g de queso mascarpone',
@@ -462,7 +462,7 @@ const RECETAS = [
   },
   {
     id: 'galletas-matcha-choc-blanco', te: 'matcha', tipo: 'platillo', nombre: 'Galletas de Matcha y Chispas de Chocolate Blanco',
-    porciones: '18 - 20 galletas', imagen: 'assets/images/galletas-matcha-choc-blanco.png',
+    porciones: '18 - 20 galletas', imagen: 'assets/images/galletas-matcha-choc-blanco.jpg',
     ingredientes: [
       '1 taza de harina para todo uso',
       '1 cucharadita de matcha en polvo',
@@ -489,7 +489,7 @@ const RECETAS = [
   },
   {
     id: 'matcha-honey-hot-chocolate', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Honey Hot Chocolate',
-    porciones: '1', imagen: 'assets/images/matcha-hot-chocolate.png',
+    porciones: '1', imagen: 'assets/images/matcha-hot-chocolate.jpg',
     ingredientes: [
       '2 cucharaditas de Té Matcha',
       '20 ml de agua caliente',
@@ -510,7 +510,7 @@ const RECETAS = [
   },
   {
     id: 'iced-matcha', te: 'matcha', tipo: 'bebida', nombre: 'Iced Matcha',
-    porciones: '1', imagen: 'assets/images/iced-matcha.png',
+    porciones: '1', imagen: 'assets/images/iced-matcha.jpg',
     ingredientes: [
       '2 cucharaditas de Té Matcha grado ceremonial',
       '70 ml de agua caliente',
@@ -525,7 +525,7 @@ const RECETAS = [
   },
   {
     id: 'matcha-soda', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Soda',
-    porciones: '1', imagen: 'assets/images/matcha-soda.png',
+    porciones: '1', imagen: 'assets/images/matcha-soda.jpg',
     ingredientes: [
       '2 cucharaditas de Té Matcha grado ceremonial',
       '2 cucharaditas de Stevia',
@@ -575,7 +575,7 @@ const RECETAS = [
   },
   {
     id: 'matcha-orange', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Orange',
-    porciones: '1', imagen: 'assets/images/matcha-orange.png',
+    porciones: '1', imagen: 'assets/images/matcha-orange.jpg',
     ingredientes: [
       '1 cucharadita de Té Matcha grado Ceremonial',
       '10 g de azúcar (1 cucharada sopera)',
@@ -591,7 +591,7 @@ const RECETAS = [
   },
   {
     id: 'matcha-mojito-smoothie', te: 'matcha', tipo: 'bebida', nombre: 'Matcha Mojito Smoothie',
-    porciones: '2', imagen: 'assets/images/matcha-mojito-smoothie.png',
+    porciones: '2', imagen: 'assets/images/matcha-mojito-smoothie.jpg',
     ingredientes: [
       '1 taza de agua de coco',
       '1 cucharadita de Té Matcha grado Ceremonial',
@@ -609,7 +609,7 @@ const RECETAS = [
   },
   {
     id: 'matcha-chia-pudding', te: 'matcha', tipo: 'platillo', nombre: 'Matcha Chia Pudding',
-    porciones: '2', imagen: 'assets/images/matcha-chia-pudding.png',
+    porciones: '2', imagen: 'assets/images/matcha-chia-pudding.jpg',
     ingredientes: [
       '1 taza de leche de almendras',
       '1/2 cucharadita de Té Matcha',
@@ -737,7 +737,7 @@ const RECETAS = [
   // ── MATCHA · BEBIDAS (nuevas) ──
   {
     id: 'shot-matcha-almendra', te: 'matcha', tipo: 'bebida', nombre: 'Shot Energizante de Matcha y Almendra',
-    porciones: '2', imagen: 'assets/images/shot-matcha-almendra.png',
+    porciones: '2', imagen: 'assets/images/shot-matcha-almendra.jpg',
     ingredientes: [
       '1 taza de leche de almendra sabor vainilla',
       '1 cucharadita de NICE Imperial Matcha Green Tea',
@@ -752,7 +752,7 @@ const RECETAS = [
   },
   {
     id: 'matcha-coco-limon', te: 'matcha', tipo: 'bebida', nombre: 'Matcha con Agua de Coco y Limón',
-    porciones: '1', imagen: 'assets/images/matcha-coco-limon.png',
+    porciones: '1', imagen: 'assets/images/matcha-coco-limon.jpg',
     ingredientes: [
       '1 cucharadita de NICE Imperial Matcha Green Tea',
       '200 ml de agua de coco natural',
@@ -857,27 +857,27 @@ const PRODUCTOS = [
 const TESTIMONIOS = [
   {
     id: 'mariana', nombre: 'Mariana, 34 años', te: 'matcha',
-    imagen: 'assets/images/testimonio1.png',
+    imagen: 'assets/images/testimonio1.jpg',
     alt: 'Testimonio de Mariana, 34 años: cambiar su café de la tarde por matcha le ayudó a sentir energía más estable.',
   },
   {
     id: 'carlos', nombre: 'Carlos, 41 años', te: 'matcha',
-    imagen: 'assets/images/testimonio2.png',
+    imagen: 'assets/images/testimonio2.jpg',
     alt: 'Testimonio de Carlos, 41 años: tomar matcha antes de caminar le da más ánimo para mantenerse activo.',
   },
   {
     id: 'paola', nombre: 'Paola, 32 años', te: 'matcha',
-    imagen: 'assets/images/testimonio3.png',
+    imagen: 'assets/images/testimonio3.jpg',
     alt: 'Testimonio de Paola, 32 años: después de correr prepara un matcha frío que complementa su rutina y le da energía sin sentirse pesada.',
   },
   {
     id: 'miguel', nombre: 'Miguel, 39 años', te: 'matcha',
-    imagen: 'assets/images/testimonio4.png',
+    imagen: 'assets/images/testimonio4.jpg',
     alt: 'Testimonio de Miguel, 39 años: el matcha se volvió parte de su mañana y le ayuda a sentir energía más constante durante su jornada de trabajo.',
   },
   {
     id: 'fernanda', nombre: 'Fernanda, 29 años', te: 'matcha',
-    imagen: 'assets/images/testimonio5.png',
+    imagen: 'assets/images/testimonio5.jpg',
     alt: 'Testimonio de Fernanda, 29 años: el matcha se volvió parte de su rutina de la mañana, le ayuda a comenzar enfocada y con energía.',
   },
 ]

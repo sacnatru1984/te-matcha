@@ -1,5 +1,11 @@
 // Lógica de navegación y render — Matcha by NICE
 
+// Miniatura liviana de una foto de receta (tarjetas, plan, quiz). La foto grande
+// solo se descarga al abrir la receta. Cada receta tiene su versión en assets/images/thumbs/.
+function miniatura(src) {
+  return src.replace('assets/images/', 'assets/images/thumbs/').replace(/.(png|jpe?g)$/i, '.jpg')
+}
+
 // ── WhatsApp / Compartir ──
 function pedirLink(texto) {
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`
@@ -25,7 +31,7 @@ function renderProductos() {
   const grid = document.getElementById('productos-grid')
   grid.innerHTML = PRODUCTOS.map(p => `
     <div class="producto-card ${p.te}" onclick="abrirProducto('${p.id}')">
-      <img src="${p.imagen}" alt="${p.nombre}">
+      <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async">
       <div class="body">
         <div class="tag">${p.te === 'matcha' ? 'Matcha' : 'Rooibos'}</div>
         <h3>${p.nombre}</h3>
@@ -116,7 +122,7 @@ function renderRecetas() {
   grid.innerHTML = lista.map(r => `
     <div class="receta-card ${r.te}" onclick="abrirReceta('${r.id}')">
       <div class="img-wrap">
-        <img src="${r.imagen}" alt="${r.nombre}">
+        <img src="${miniatura(r.imagen)}" alt="${r.nombre}" loading="lazy" decoding="async">
         <button class="fav-btn card-fav ${esFavorito(r.id) ? 'active' : ''}" onclick="toggleFavorito('${r.id}', event)">${esFavorito(r.id) ? '♥' : '♡'}</button>
       </div>
       <div class="body">
@@ -244,7 +250,7 @@ function verResultadoQuiz() {
     ${producto ? `
       <h4>Producto recomendado</h4>
       <div class="producto-card ${te}" onclick="cerrarQuiz(); abrirProducto('${producto.id}')">
-        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy" decoding="async">
         <div class="body">
           <div class="tag">${nombreTe}</div>
           <h3>${producto.nombre}</h3>
@@ -259,7 +265,7 @@ function verResultadoQuiz() {
       <h4>Recetas para empezar</h4>
       ${recetas.map(r => `
         <div class="receta-card ${te}" onclick="cerrarQuiz(); abrirReceta('${r.id}')">
-          <img src="${r.imagen}" alt="${r.nombre}">
+          <img src="${miniatura(r.imagen)}" alt="${r.nombre}" loading="lazy" decoding="async">
           <div class="body">
             <div class="tag">${nombreTe} · ${r.tipo === 'bebida' ? 'Bebida' : 'Platillo'}</div>
             <h3>${r.nombre}</h3>
@@ -372,7 +378,7 @@ function renderTestimonios() {
   const grid = document.getElementById('testimonios-grid')
   grid.innerHTML = TESTIMONIOS.map(t => `
     <div class="testimonio-card">
-      <img src="${t.imagen}" alt="${t.alt}">
+      <img src="${t.imagen}" alt="${t.alt}" loading="lazy" decoding="async">
     </div>
   `).join('')
 }
@@ -395,7 +401,7 @@ function renderPlan() {
     return `
       <div class="plan-dia" onclick="abrirReceta('${r.id}')">
         <div class="plan-dia-num">${d.dia}</div>
-        <div class="plan-dia-img"><img src="${r.imagen}" alt="${r.nombre}"></div>
+        <div class="plan-dia-img"><img src="${miniatura(r.imagen)}" alt="${r.nombre}" loading="lazy" decoding="async"></div>
         <div class="plan-dia-body">
           <div class="tag">${r.te === 'matcha' ? 'Matcha' : 'Rooibos'} · ${r.tipo === 'bebida' ? 'Bebida' : 'Platillo'}</div>
           <h3>${r.nombre}</h3>
