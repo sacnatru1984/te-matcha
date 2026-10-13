@@ -20,6 +20,7 @@ function compartir(titulo, texto) {
 }
 
 function irA(tab) {
+  if (tab !== 'historia' && typeof lector !== 'undefined') lector.detener()
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'))
   document.getElementById('sec-' + tab).classList.add('active')
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab))
@@ -279,12 +280,18 @@ function verResultadoQuiz() {
 
 // ── Historia / beneficios: toda la sección es un acordeón ──
 function accSection(id, titulo, contenidoHtml, accent) {
+  const escuchar = lector.soportado
+    ? `<button class="acc-listen" data-id="${id}" onclick="escucharSeccion('${id}')" aria-label="Escuchar: ${titulo}">🔊 Escuchar</button>`
+    : ''
   return `
-    <div class="acc-section ${accent || ''}">
-      <button class="acc-header" onclick="toggleAcc('${id}')">
-        <span>${titulo}</span>
-        <span class="acc-chev" id="acc-chev-${id}">›</span>
-      </button>
+    <div class="acc-section ${accent || ''}" id="acc-${id}">
+      <div class="acc-head-row">
+        <button class="acc-header" onclick="toggleAcc('${id}')">
+          <span>${titulo}</span>
+          <span class="acc-chev" id="acc-chev-${id}">›</span>
+        </button>
+        ${escuchar}
+      </div>
       <div class="acc-wrap" id="acc-wrap-${id}">
         <div class="acc-inner">${contenidoHtml}</div>
       </div>
@@ -355,6 +362,18 @@ function renderHistoria() {
     </div>
   `
 
+  // Textos para el lector: cada sección empieza diciendo su título.
+  const tituloBenMatcha = INFO_TES.matcha.titulo + ' — Beneficios'
+  const tituloBenRooibos = INFO_TES.rooibos.titulo + ' — Beneficios'
+  registrarAudio('origen-matcha', 'Origen del Matcha', ORIGEN_MATCHA.texto)
+  registrarAudio('beneficios-matcha', tituloBenMatcha, INFO_TES.matcha.beneficios.map(b => b.t + '. ' + b.d))
+  registrarAudio('origen-rooibos', 'Origen del Rooibos', ORIGEN_ROOIBOS.texto)
+  registrarAudio('beneficios-rooibos', tituloBenRooibos, INFO_TES.rooibos.beneficios.map(b => b.t + '. ' + b.d))
+  registrarAudio('preparacion', PREPARACION_MATCHA.titulo, PREPARACION_MATCHA.items.map(it => it.t + '. ' + it.d))
+  registrarAudio('mitos', 'Mitos y verdades', MITOS.map(m => 'Mito: ' + m.mito + ' Verdad: ' + m.verdad))
+  registrarAudio('faqs', 'Preguntas frecuentes', FAQS.map(f => f.pregunta + ' ' + f.respuesta))
+  document.getElementById('audio-bar').hidden = !lector.soportado
+
   block.innerHTML = [
     accSection('origen-matcha', 'Origen del Matcha', origenMatchaHtml),
     accSection('beneficios-matcha', INFO_TES.matcha.titulo + ' — Beneficios', beneficiosMatchaHtml),
@@ -372,6 +391,113 @@ function toggleFaq(i) {
   const abierta = respuesta.classList.toggle('open')
   chev.classList.toggle('open', abierta)
 }
+
+// ── Lector en voz alta (sección Historia) ──
+// Usa la voz del teléfono; no envía nada a ningún servidor. La lógica está en lector.js.
+const VEL_KEY = 'tematcha_velocidad'
+const AUDIO_ORDEN = ['origen-matcha', 'beneficios-matcha', 'origen-rooibos', 'beneficios-rooibos', 'preparacion', 'mitos', 'faqs']
+const AUDIO_SECCIONES = {}
+let lectorEnTodo = false
+
+const lector = crearLector({
+  synth: typeof speechSynthesis !== 'undefined' ? speechSynthesis : null,
+  Utterance: typeof SpeechSynthesisUtterance !== 'undefined' ? SpeechSynthesisUtterance : null,
+  alCambiar: actualizarLectorUI,
+})
+
+function registrarAudio(id, titulo, textos) {
+  AUDIO_SECCIONES[id] = { id, titulo, textos: [titulo + '.', ...textos] }
+}
+
+let lectorSeccion = null
+function escucharSeccion(id) {
+  const sec = AUDIO_SECCIONES[id]
+  if (!lector.soportado || !sec) return
+  if (lector.estado !== 'detenido' && lectorSeccion === id && !lectorEnTodo) { lector.alternar(); return }
+  lectorEnTodo = false
+  mostrarErrorAudio('')
+  lector.leer([sec])
+}
+
+function escucharTodo() {
+  if (!lector.soportado) return
+  if (lector.estado !== 'detenido' && lectorEnTodo) { lector.alternar(); return }
+  lectorEnTodo = true
+  mostrarErrorAudio('')
+  lector.leer(AUDIO_ORDEN.map(id => AUDIO_SECCIONES[id]).filter(Boolean))
+}
+
+function lectorAlternar() { lector.alternar() }
+function lectorDetener() { lector.detener() }
+function lectorVelocidad() {
+  lector.siguienteVelocidad()
+  try { localStorage.setItem(VEL_KEY, String(lector.velocidad)) } catch {}
+}
+
+function mostrarErrorAudio(msg) {
+  const bar = document.getElementById('audio-bar')
+  let el = document.getElementById('audio-error')
+  if (!msg) { if (el) el.remove(); return }
+  if (!el) {
+    el = document.createElement('div')
+    el.id = 'audio-error'
+    el.className = 'audio-error'
+    bar.appendChild(el)
+  }
+  el.textContent = msg
+}
+
+function actualizarLectorUI(e) {
+  const activo = e.estado !== 'detenido'
+  lectorSeccion = activo ? e.seccionId : null
+  if (!activo) lectorEnTodo = false
+
+  document.querySelectorAll('.acc-listen').forEach(b => {
+    const propio = activo && !lectorEnTodo && b.dataset.id === e.seccionId
+    b.classList.toggle('activo', propio)
+    b.textContent = propio ? (e.estado === 'leyendo' ? '⏸ Pausar' : '▶ Continuar') : '🔊 Escuchar'
+  })
+  document.querySelectorAll('.acc-section').forEach(sec => {
+    sec.classList.toggle('leyendo', activo && sec.id === 'acc-' + e.seccionId)
+  })
+  const todo = document.getElementById('audio-todo')
+  if (todo) {
+    todo.classList.toggle('activo', activo && lectorEnTodo)
+    todo.textContent = activo && lectorEnTodo
+      ? (e.estado === 'leyendo' ? '⏸ Pausar lectura' : '▶ Continuar lectura')
+      : '🔊 Escuchar toda la historia'
+  }
+
+  // Al empezar una sección se abre y se muestra en pantalla
+  if (e.nuevaSeccion && e.seccionId) {
+    const wrap = document.getElementById('acc-wrap-' + e.seccionId)
+    const chev = document.getElementById('acc-chev-' + e.seccionId)
+    if (wrap && !wrap.classList.contains('open')) { wrap.classList.add('open'); if (chev) chev.classList.add('open') }
+    const sec = document.getElementById('acc-' + e.seccionId)
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  // Reproductor flotante
+  const mini = document.getElementById('mini-player')
+  if (mini) {
+    mini.hidden = !activo
+    if (activo) {
+      const nav = document.querySelector('.bottom-nav')
+      mini.style.bottom = ((nav ? nav.offsetHeight : 62) + 8) + 'px'
+      document.getElementById('mp-titulo').textContent = e.titulo || ''
+      document.getElementById('mp-sub').textContent = (e.estado === 'pausado' ? 'En pausa' : 'Leyendo') + (e.total > 1 ? ' · sección ' + e.posicion + ' de ' + e.total : '')
+      const play = document.getElementById('mp-play')
+      play.textContent = e.estado === 'leyendo' ? '⏸' : '▶'
+      play.setAttribute('aria-label', e.estado === 'leyendo' ? 'Pausar' : 'Continuar')
+    }
+    document.getElementById('mp-vel').textContent = e.velocidad + '×'
+  }
+
+  if (e.error === 'no-arranco') mostrarErrorAudio('No pudimos reproducir la voz. Sube el volumen, revisa que el teléfono no esté en silencio y vuelve a intentarlo.')
+  else if (e.error === 'no-permitido') mostrarErrorAudio('Tu navegador bloqueó el audio. Toca el botón de nuevo para escuchar.')
+}
+
+window.addEventListener('pagehide', () => lector.detener())
 
 // ── Testimonios ──
 function renderTestimonios() {
@@ -431,3 +557,4 @@ renderProductos()
 renderRecetas()
 renderHistoria()
 renderTestimonios()
+try { const v = parseFloat(localStorage.getItem(VEL_KEY)); if (v) lector.fijarVelocidad(v) } catch {}

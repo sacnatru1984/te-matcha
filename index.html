@@ -121,6 +121,10 @@
       <h2>Conoce nuestros tés</h2>
       <p>Lo que hace especial a cada uno.</p>
     </div>
+    <div class="audio-bar" id="audio-bar" hidden>
+      <button class="btn-audio-todo" id="audio-todo" onclick="escucharTodo()">🔊 Escuchar toda la historia</button>
+      <span class="audio-hint">O toca <b>Escuchar</b> en la sección que quieras.</span>
+    </div>
     <div class="beneficios-block" id="beneficios-block"></div>
   </section>
 
@@ -230,6 +234,14 @@
   </div>
 </div>
 
+<!-- ═══ REPRODUCTOR DE VOZ (Historia) ═══ -->
+<div class="mini-player" id="mini-player" role="region" aria-label="Lector en voz alta" hidden>
+  <div class="mp-info"><b id="mp-titulo"></b><small id="mp-sub"></small></div>
+  <button class="mp-btn" id="mp-play" onclick="lectorAlternar()" aria-label="Pausar">⏸</button>
+  <button class="mp-btn" id="mp-stop" onclick="lectorDetener()" aria-label="Detener">⏹</button>
+  <button class="mp-vel" id="mp-vel" onclick="lectorVelocidad()" aria-label="Cambiar velocidad de lectura">1×</button>
+</div>
+
 <!-- ═══ BOTTOM NAV ═══ -->
 <nav class="bottom-nav">
   <button class="nav-btn active" data-tab="inicio" onclick="irA('inicio')"><span class="ic">🏠</span>Inicio</button>
@@ -241,6 +253,7 @@
 </nav>
 
 <script src="data.js"></script>
+<script src="lector.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
