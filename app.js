@@ -178,10 +178,15 @@ function abrirReceta(id) {
   document.getElementById('modal-pedir').textContent = `📲 Pide tu ${teNombre} para esta receta`
   document.getElementById('modal-compartir').onclick = () => compartir(r.nombre, `Mira esta receta de ${r.nombre} en la guía Matcha by NICE 🍵`)
   actualizarBotonFavModal(id)
+  if (lector.estado !== 'detenido') lector.detener()
+  document.getElementById('rec-audio').hidden = !lector.soportado
+  mostrarErrorReceta('')
+  actualizarLectorUI({ estado: 'detenido', seccionId: null, titulo: '', posicion: 0, total: 0, velocidad: lector.velocidad })
   document.getElementById('modal').classList.add('open')
 }
 
 function cerrarModal() {
+  if (recetaModalAbierta && lectorSeccion && lectorSeccion.startsWith('receta:')) lector.detener()
   document.getElementById('modal').classList.remove('open')
   recetaModalAbierta = null
 }
@@ -427,6 +432,35 @@ function escucharTodo() {
   lector.leer(AUDIO_ORDEN.map(id => AUDIO_SECCIONES[id]).filter(Boolean))
 }
 
+// Texto de una receta para leer: nombre, porciones, ingredientes y pasos numerados.
+function textosReceta(r) {
+  return [
+    r.nombre + '.',
+    'Porciones: ' + r.porciones + '.',
+    'Ingredientes.',
+    ...r.ingredientes.map(i => i.replace(/[.;,\s]+$/, '') + '.'),
+    'Instrucciones.',
+    ...r.instrucciones.map((p, i) => 'Paso ' + (i + 1) + '. ' + p),
+  ]
+}
+
+function escucharReceta() {
+  const r = RECETAS.find(x => x.id === recetaModalAbierta)
+  if (!lector.soportado || !r) return
+  const idLector = 'receta:' + r.id
+  if (lector.estado !== 'detenido' && lectorSeccion === idLector) { lector.alternar(); return }
+  lectorEnTodo = false
+  mostrarErrorReceta('')
+  lector.leer([{ id: idLector, titulo: r.nombre, textos: textosReceta(r) }])
+}
+
+function mostrarErrorReceta(msg) {
+  const el = document.getElementById('rec-audio-error')
+  if (!el) return
+  el.textContent = msg
+  el.hidden = !msg
+}
+
 function lectorAlternar() { lector.alternar() }
 function lectorDetener() { lector.detener() }
 function lectorVelocidad() {
@@ -477,11 +511,23 @@ function actualizarLectorUI(e) {
     if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  // Reproductor flotante
+  // Barra de voz dentro de la receta abierta
+  const esReceta = activo && !!e.seccionId && e.seccionId.startsWith('receta:')
+  const propiaReceta = esReceta && recetaModalAbierta && e.seccionId === 'receta:' + recetaModalAbierta
+  const recMain = document.getElementById('rec-audio-main')
+  if (recMain) {
+    recMain.classList.toggle('activo', !!propiaReceta)
+    recMain.textContent = propiaReceta ? (e.estado === 'leyendo' ? '⏸ Pausar' : '▶ Continuar') : '🔊 Escuchar receta'
+    document.getElementById('rec-audio-stop').hidden = !propiaReceta
+    document.getElementById('rec-audio-vel').hidden = !propiaReceta
+    document.getElementById('rec-audio-vel').textContent = e.velocidad + '×'
+  }
+
+  // Reproductor flotante (solo para Historia; las recetas llevan su propia barra)
   const mini = document.getElementById('mini-player')
   if (mini) {
-    mini.hidden = !activo
-    if (activo) {
+    mini.hidden = !activo || esReceta
+    if (activo && !esReceta) {
       const nav = document.querySelector('.bottom-nav')
       mini.style.bottom = ((nav ? nav.offsetHeight : 62) + 8) + 'px'
       document.getElementById('mp-titulo').textContent = e.titulo || ''
@@ -493,8 +539,10 @@ function actualizarLectorUI(e) {
     document.getElementById('mp-vel').textContent = e.velocidad + '×'
   }
 
-  if (e.error === 'no-arranco') mostrarErrorAudio('No pudimos reproducir la voz. Sube el volumen, revisa que el teléfono no esté en silencio y vuelve a intentarlo.')
-  else if (e.error === 'no-permitido') mostrarErrorAudio('Tu navegador bloqueó el audio. Toca el botón de nuevo para escuchar.')
+  const deReceta = !!e.seccionId && e.seccionId.startsWith('receta:')
+  const avisoError = deReceta ? mostrarErrorReceta : mostrarErrorAudio
+  if (e.error === 'no-arranco') avisoError('No pudimos reproducir la voz. Sube el volumen, revisa que el teléfono no esté en silencio y vuelve a intentarlo.')
+  else if (e.error === 'no-permitido') avisoError('Tu navegador bloqueó el audio. Toca el botón de nuevo para escuchar.')
 }
 
 window.addEventListener('pagehide', () => lector.detener())

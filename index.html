@@ -171,6 +171,12 @@
       <div class="tag" id="modal-tag"></div>
       <h2 id="modal-nombre"></h2>
       <div class="porciones" id="modal-porciones"></div>
+      <div class="rec-audio" id="rec-audio" hidden>
+        <button class="rec-audio-main" id="rec-audio-main" onclick="escucharReceta()">🔊 Escuchar receta</button>
+        <button class="mp-btn" id="rec-audio-stop" onclick="lectorDetener()" aria-label="Detener lectura" hidden>⏹</button>
+        <button class="mp-vel" id="rec-audio-vel" onclick="lectorVelocidad()" aria-label="Cambiar velocidad de lectura" hidden>1×</button>
+        <div class="audio-error" id="rec-audio-error" hidden></div>
+      </div>
       <h4>Ingredientes</h4>
       <ul id="modal-ingredientes"></ul>
       <h4>Instrucciones</h4>
