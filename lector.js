@@ -91,14 +91,30 @@ function crearLector({ synth, Utterance, alCambiar }) {
     return sec._trozos
   }
 
+  // Nombres de voces femeninas comunes en español entre Windows, Android/Chrome e iOS/Safari.
+  // No hay forma estándar de pedir "voz femenina" en la Web Speech API — cada sistema expone
+  // solo un nombre propio, así que se reconoce por los nombres típicos.
+  const VOCES_FEMENINAS = [
+    'paulina', 'mónica', 'monica', 'helena', 'sabina', 'laura', 'angelica', 'angélica',
+    'marisol', 'lucia', 'lucía', 'camila', 'isabela', 'isabella', 'soledad', 'penélope',
+    'penelope', 'conchita', 'esperanza', 'elena', 'carmen', 'inés', 'ines', 'rosa',
+    'female', 'mujer',
+  ]
+  function esVozFemenina(v) {
+    const n = (v.name || '').toLowerCase()
+    return VOCES_FEMENINAS.some(nombre => n.includes(nombre))
+  }
+
   function elegirVoz() {
     const voces = synth.getVoices ? synth.getVoices() : []
     const es = voces.filter(v => /^es([-_]|$)/i.test(v.lang))
+    const esFem = es.filter(esVozFemenina)
+    const candidatas = esFem.length ? esFem : es
     for (const pref of ['es-MX', 'es-US', 'es-419', 'es-ES']) {
-      const v = es.find(x => x.lang.replace('_', '-').toLowerCase() === pref.toLowerCase())
+      const v = candidatas.find(x => x.lang.replace('_', '-').toLowerCase() === pref.toLowerCase())
       if (v) return v
     }
-    return es[0] || null
+    return candidatas[0] || null
   }
 
   function avisar(extra) {
